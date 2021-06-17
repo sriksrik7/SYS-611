@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.4.202104291627" AlpVersion="8.7.2">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.4.202104291558" AlpVersion="8.7.2">
 <Model>
 	<Id>1623209158847</Id>
 	<Name><![CDATA[NJ Turnpike Shortest Queue]]></Name>
@@ -413,7 +413,7 @@
 				<Connector>
 					<Id>1623725505056</Id>
 					<Name><![CDATA[connector31]]></Name>
-					<X>1370</X><Y>360</Y>
+					<X>1390</X><Y>770</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -421,7 +421,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -431,7 +431,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[sink]]></ItemName>
+						<ItemName><![CDATA[sinkCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -440,7 +440,7 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>70</X><Y>0</Y></Point>
+						<Point><X>90</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -643,40 +643,6 @@
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1623802250842</Id>
-					<Name><![CDATA[connector34]]></Name>
-					<X>620</X><Y>380</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[tollBay_EZ1]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[TollBay_EZ]]></ClassName>
-						<ItemName><![CDATA[port2]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>530</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-20</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
 					<Id>1623802250843</Id>
 					<Name><![CDATA[connector35]]></Name>
 					<X>620</X><Y>360</Y>
@@ -697,7 +663,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -706,14 +672,14 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>0</Y></Point>
+						<Point><X>230</X><Y>0</Y></Point>
+						<Point><X>760</X><Y>410</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1623802559699</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>1360</X><Y>360</Y>
+					<X>1380</X><Y>770</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -721,7 +687,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -740,8 +706,8 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-460</X><Y>100</Y></Point>
-						<Point><X>-740</X><Y>100</Y></Point>
+						<Point><X>-480</X><Y>-310</Y></Point>
+						<Point><X>-760</X><Y>-310</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -778,43 +744,9 @@
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1623802729093</Id>
-					<Name><![CDATA[connector5]]></Name>
-					<X>620</X><Y>480</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[tollBay_EZ2]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[TollBay_EZ]]></ClassName>
-						<ItemName><![CDATA[port2]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>280</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-120</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
 					<Id>1623802767609</Id>
 					<Name><![CDATA[connector3]]></Name>
-					<X>1360</X><Y>360</Y>
+					<X>1380</X><Y>770</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -822,7 +754,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -841,8 +773,8 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-510</X><Y>200</Y></Point>
-						<Point><X>-740</X><Y>200</Y></Point>
+						<Point><X>-580</X><Y>-210</Y></Point>
+						<Point><X>-760</X><Y>-210</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -876,40 +808,6 @@
 					<Points>
 						<Point><X>580</X><Y>580</Y></Point>
 						<Point><X>470</X><Y>580</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1623802825162</Id>
-					<Name><![CDATA[connector7]]></Name>
-					<X>620</X><Y>580</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[tollBay_EZ3]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[TollBay_EZ]]></ClassName>
-						<ItemName><![CDATA[port2]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>230</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-220</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1065,7 +963,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1075,41 +973,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>180</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-300</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1623803060641</Id>
-					<Name><![CDATA[connector20]]></Name>
-					<X>620</X><Y>680</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[tollBay_EZ4]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[TollBay_EZ]]></ClassName>
-						<ItemName><![CDATA[port2]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>180</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-320</Y></Point>
+						<Point><X>760</X><Y>110</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1133,7 +997,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1143,41 +1007,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-400</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1623803242031</Id>
-					<Name><![CDATA[connector37]]></Name>
-					<X>620</X><Y>780</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[tollBay_EZ5]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[TollBay_EZ]]></ClassName>
-						<ItemName><![CDATA[port2]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-420</Y></Point>
+						<Point><X>760</X><Y>10</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1201,7 +1031,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1211,41 +1041,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-500</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1623803274782</Id>
-					<Name><![CDATA[connector39]]></Name>
-					<X>620</X><Y>880</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[tollBay_EZ6]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[TollBay_EZ]]></ClassName>
-						<ItemName><![CDATA[port2]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[nj_turnpike]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-520</Y></Point>
+						<Point><X>760</X><Y>-90</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1269,7 +1065,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1279,7 +1075,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-600</Y></Point>
+						<Point><X>760</X><Y>-190</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1303,7 +1099,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1313,7 +1109,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-620</Y></Point>
+						<Point><X>790</X><Y>240</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1370,7 +1166,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1380,7 +1176,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-700</Y></Point>
+						<Point><X>760</X><Y>-290</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1404,7 +1200,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1414,7 +1210,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-720</Y></Point>
+						<Point><X>790</X><Y>140</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1471,7 +1267,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1481,13 +1277,13 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-840</Y></Point>
+						<Point><X>760</X><Y>-430</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1623803694500</Id>
 					<Name><![CDATA[connector47]]></Name>
-					<X>1360</X><Y>360</Y>
+					<X>1380</X><Y>770</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1495,7 +1291,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1514,8 +1310,8 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-610</X><Y>820</Y></Point>
-						<Point><X>-740</X><Y>820</Y></Point>
+						<Point><X>-630</X><Y>410</Y></Point>
+						<Point><X>-760</X><Y>410</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1539,7 +1335,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1549,13 +1345,13 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-860</Y></Point>
+						<Point><X>790</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1623803928369</Id>
 					<Name><![CDATA[connector12]]></Name>
-					<X>1360</X><Y>360</Y>
+					<X>1380</X><Y>770</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1563,7 +1359,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1582,8 +1378,8 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-610</X><Y>930</Y></Point>
-						<Point><X>-740</X><Y>930</Y></Point>
+						<Point><X>-630</X><Y>520</Y></Point>
+						<Point><X>-760</X><Y>520</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1640,7 +1436,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1650,7 +1446,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-950</Y></Point>
+						<Point><X>760</X><Y>-540</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1674,7 +1470,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1684,7 +1480,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-970</Y></Point>
+						<Point><X>790</X><Y>-110</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1939,7 +1735,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1949,7 +1745,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>180</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1050</Y></Point>
+						<Point><X>760</X><Y>-640</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1973,7 +1769,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1983,7 +1779,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>180</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1070</Y></Point>
+						<Point><X>760</X><Y>-660</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2007,7 +1803,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2017,7 +1813,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>190</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1090</Y></Point>
+						<Point><X>790</X><Y>-230</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2041,7 +1837,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2051,7 +1847,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>180</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1260</Y></Point>
+						<Point><X>760</X><Y>-850</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2075,7 +1871,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2085,7 +1881,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>180</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1160</Y></Point>
+						<Point><X>760</X><Y>-750</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2109,7 +1905,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2119,7 +1915,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>180</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1180</Y></Point>
+						<Point><X>760</X><Y>-770</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2143,7 +1939,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2153,7 +1949,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>180</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1200</Y></Point>
+						<Point><X>790</X><Y>-340</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2177,7 +1973,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2187,7 +1983,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>200</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1280</Y></Point>
+						<Point><X>760</X><Y>-870</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2211,7 +2007,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2221,7 +2017,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>200</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1300</Y></Point>
+						<Point><X>790</X><Y>-440</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2245,7 +2041,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2255,7 +2051,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>230</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1370</Y></Point>
+						<Point><X>760</X><Y>-960</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2279,7 +2075,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2289,7 +2085,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>250</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1390</Y></Point>
+						<Point><X>760</X><Y>-980</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2313,7 +2109,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2323,7 +2119,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>270</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1410</Y></Point>
+						<Point><X>790</X><Y>-550</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2347,7 +2143,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2357,7 +2153,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>280</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1480</Y></Point>
+						<Point><X>760</X><Y>-1070</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2381,7 +2177,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2391,7 +2187,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>300</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1500</Y></Point>
+						<Point><X>760</X><Y>-1090</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2415,7 +2211,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2425,7 +2221,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>310</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1520</Y></Point>
+						<Point><X>790</X><Y>-660</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2449,7 +2245,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2459,7 +2255,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>330</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1590</Y></Point>
+						<Point><X>760</X><Y>-1180</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2483,7 +2279,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2493,7 +2289,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>350</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1610</Y></Point>
+						<Point><X>760</X><Y>-1200</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2517,7 +2313,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2527,7 +2323,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>370</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1630</Y></Point>
+						<Point><X>790</X><Y>-770</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2551,7 +2347,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2561,7 +2357,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>410</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1690</Y></Point>
+						<Point><X>760</X><Y>-1280</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2585,7 +2381,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopCar]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2595,7 +2391,7 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>440</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1710</Y></Point>
+						<Point><X>760</X><Y>-1300</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2619,7 +2415,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[nj_turnpike]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[timeStop]]></ItemName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -2629,7 +2425,244 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>470</X><Y>0</Y></Point>
-						<Point><X>740</X><Y>-1730</Y></Point>
+						<Point><X>790</X><Y>-870</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1623896658299</Id>
+					<Name><![CDATA[connector5]]></Name>
+					<X>620</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[tollBay_EZ1]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[TollBay_EZ]]></ClassName>
+						<ItemName><![CDATA[port2]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>180</X><Y>0</Y></Point>
+						<Point><X>790</X><Y>840</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1623896662791</Id>
+					<Name><![CDATA[connector7]]></Name>
+					<X>620</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[tollBay_EZ2]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[TollBay_EZ]]></ClassName>
+						<ItemName><![CDATA[port2]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>180</X><Y>0</Y></Point>
+						<Point><X>790</X><Y>740</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1623896810816</Id>
+					<Name><![CDATA[connector20]]></Name>
+					<X>620</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[tollBay_EZ3]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[TollBay_EZ]]></ClassName>
+						<ItemName><![CDATA[port2]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>180</X><Y>0</Y></Point>
+						<Point><X>790</X><Y>640</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1623896844653</Id>
+					<Name><![CDATA[connector34]]></Name>
+					<X>620</X><Y>680</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[tollBay_EZ4]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[TollBay_EZ]]></ClassName>
+						<ItemName><![CDATA[port2]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>180</X><Y>0</Y></Point>
+						<Point><X>790</X><Y>540</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1623896849444</Id>
+					<Name><![CDATA[connector37]]></Name>
+					<X>620</X><Y>780</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[tollBay_EZ5]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[TollBay_EZ]]></ClassName>
+						<ItemName><![CDATA[port2]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>130</X><Y>0</Y></Point>
+						<Point><X>790</X><Y>440</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1623897005283</Id>
+					<Name><![CDATA[connector39]]></Name>
+					<X>620</X><Y>880</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[tollBay_EZ6]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[TollBay_EZ]]></ClassName>
+						<ItemName><![CDATA[port2]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>130</X><Y>0</Y></Point>
+						<Point><X>790</X><Y>340</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1623897175817</Id>
+					<Name><![CDATA[connector69]]></Name>
+					<X>1470</X><Y>1220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[sinkTruck]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Sink]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[nj_turnpike]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[timeStopTruck]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-50</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -2648,14 +2681,16 @@
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[int a = 2147483647;
 int b = -1;
+List<Integer> givenList = new ArrayList<>();
 for (int i = (collectionQueueEZ.size()-1); i >= 0; i--) {
     if (collectionQueueEZ.get(i).size() <= a) {
-        a = collectionQueueEZ.get(i).size();
-        b = i;
+        givenList.add(i);
     }
 }
+Random rand = new Random();
+int randomElement = givenList.get(rand.nextInt(givenList.size()));
 
-return collectionEnterEZ.get(b);]]></Body>
+return collectionEnterEZ.get(randomElement);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -2669,14 +2704,16 @@ return collectionEnterEZ.get(b);]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[int a = 2147483647;
 int b = -1;
+List<Integer> givenList2 = new ArrayList<>();
 for (int i = (collectionQueueC.size()-1); i >= 0; i--) {
     if (collectionQueueC.get(i).size() <= a) {
-        a = collectionQueueC.get(i).size();
-        b = i;
+        givenList2.add(i);
     }
 }
+Random rand = new Random();
+int randomElement = givenList2.get(rand.nextInt(givenList2.size()));
 
-return collectionEnterC.get(b);]]></Body>
+return collectionEnterC.get(randomElement);]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -2962,8 +2999,8 @@ return collectionEnterC.get(b);]]></Body>
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1623209179239</Id>
-					<Name><![CDATA[sink]]></Name>
-					<X>1440</X><Y>350</Y>
+					<Name><![CDATA[sinkCar]]></Name>
+					<X>1480</X><Y>760</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4231,8 +4268,8 @@ return collectionEnterC.get(b);]]></Body>
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1623725499558</Id>
-					<Name><![CDATA[timeStop]]></Name>
-					<X>1340</X><Y>340</Y>
+					<Name><![CDATA[timeStopCar]]></Name>
+					<X>1360</X><Y>750</Y>
 					<Label><X>-5</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7517,6 +7554,144 @@ return collectionEnterC.get(b);]]></Body>
 					<QuantityColumn>
 					</QuantityColumn>
 				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1623896557227</Id>
+					<Name><![CDATA[timeStopTruck]]></Name>
+					<X>1390</X><Y>1200</Y>
+					<Label><X>-45</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[TimeMeasureEnd]]></ClassName>
+							<ItemName><![CDATA[1412336243203]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[startObjects]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[{ timeStartTruck, timeStartCar }]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[datasetCapacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1623897173230</Id>
+					<Name><![CDATA[sinkTruck]]></Name>
+					<X>1470</X><Y>1210</Y>
+					<Label><X>-10</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Sink]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[Sink]]></ClassName>
+							<ItemName><![CDATA[1412336242929]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[destroyEntity]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
 			</EmbeddedObjects>
 
 			<Presentation>
@@ -7703,14 +7878,25 @@ return collectionEnterC.get(b);]]></Body>
 					</Bars>
 					<HistogramDataExpression>
 					<Id>0</Id>
-					<Expression><![CDATA[timeStop.distribution]]></Expression>
+					<Expression><![CDATA[timeStopCar.distribution]]></Expression>
 						<ColorPDF>-12490271</ColorPDF>
 						<ColorCDF>-65536</ColorCDF>
 						<ColorLowPercent>-29696</ColorLowPercent>
 						<ColorHighPercent>-16777216</ColorHighPercent>
 						<ColorMean>-7667573</ColorMean>
 						<LineWidth>1</LineWidth>						
-						<Title><![CDATA[Vehicle's time in the System]]></Title>							
+						<Title><![CDATA[Car's time in the System]]></Title>							
+					</HistogramDataExpression>
+					<HistogramDataExpression>
+					<Id>0</Id>
+					<Expression><![CDATA[timeStopTruck.distribution]]></Expression>
+						<ColorPDF>-7667573</ColorPDF>
+						<ColorCDF>-2987746</ColorCDF>
+						<ColorLowPercent>-12799119</ColorLowPercent>
+						<ColorHighPercent>-3137392</ColorHighPercent>
+						<ColorMean>-23296</ColorMean>
+						<LineWidth>1</LineWidth>						
+						<Title><![CDATA[Truck's time in the System]]></Title>							
 					</HistogramDataExpression>
     			</Histogram>
     			<BarChart>
