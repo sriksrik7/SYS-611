@@ -10640,8 +10640,8 @@ T agent - the agent.
 			<StopOption><![CDATA[Stop at specified time]]></StopOption>
 			<InitialDate><![CDATA[1623974400000]]></InitialDate>	
 			<InitialTime><![CDATA[0.0]]></InitialTime>	
-			<FinalDate><![CDATA[1623987000000]]></FinalDate>	
-			<FinalTime><![CDATA[210.0]]></FinalTime>	
+			<FinalDate><![CDATA[1624060800000]]></FinalDate>	
+			<FinalTime><![CDATA[1440.0]]></FinalTime>	
 		</ModelTimeProperties>
 		<AnimationProperties>
 			<StopNever>true</StopNever>
@@ -10732,8 +10732,8 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1623974400000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1623987000000]]></FinalDate>	
-				<FinalTime><![CDATA[210.0]]></FinalTime>	
+				<FinalDate><![CDATA[1624060800000]]></FinalDate>	
+				<FinalTime><![CDATA[1440.0]]></FinalTime>	
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
 		</SimulationExperiment>	
