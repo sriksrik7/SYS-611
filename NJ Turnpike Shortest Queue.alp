@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.4.202104291627" AlpVersion="8.7.2">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.4.202104291558" AlpVersion="8.7.2">
 <Model>
 	<Id>1623209158847</Id>
 	<Name><![CDATA[NJ Turnpike Shortest Queue]]></Name>
@@ -168,7 +168,7 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[triangular( 5, 10, 15 )]]></Code>
+							<Code><![CDATA[triangular( 1000, 2600, 1500 )]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -205,7 +205,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1623817282691</Id>
 					<Name><![CDATA[queueEZ_Capacity]]></Name>
-					<X>970</X><Y>220</Y>
+					<X>1130</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -213,14 +213,14 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[5]]></Code>
+							<Code><![CDATA[40]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1623817351208</Id>
 					<Name><![CDATA[queueC_Capacity]]></Name>
-					<X>970</X><Y>260</Y>
+					<X>1130</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -228,7 +228,7 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[5]]></Code>
+							<Code><![CDATA[40]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -373,8 +373,8 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>0</X><Y>60</Y></Point>
-						<Point><X>0</X><Y>720</Y></Point>
-						<Point><X>140</X><Y>720</Y></Point>
+						<Point><X>0</X><Y>760</Y></Point>
+						<Point><X>140</X><Y>760</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -473,8 +473,8 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>810</Y></Point>
-						<Point><X>70</X><Y>810</Y></Point>
+						<Point><X>0</X><Y>850</Y></Point>
+						<Point><X>70</X><Y>850</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -2766,7 +2766,7 @@ return collectionEnterC.get(randomElement);]]></Body>
 							<Name><![CDATA[rate]]></Name>
 							<Value Class="CodeUnitValue">
 								<Code><![CDATA[TrafficVolume * 0.6]]></Code>
-								<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+								<Unit Class="RateUnits"><![CDATA[PER_HOUR]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -3603,7 +3603,7 @@ return collectionEnterC.get(randomElement);]]></Body>
 				<EmbeddedObject>
 					<Id>1623257924414</Id>
 					<Name><![CDATA[exitCash]]></Name>
-					<X>390</X><Y>1170</Y>
+					<X>390</X><Y>1210</Y>
 					<Label><X>-10</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3951,7 +3951,7 @@ return collectionEnterC.get(randomElement);]]></Body>
 							<Name><![CDATA[rate]]></Name>
 							<Value Class="CodeUnitValue">
 								<Code><![CDATA[TrafficVolume * 0.4]]></Code>
-								<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+								<Unit Class="RateUnits"><![CDATA[PER_HOUR]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -8008,6 +8008,73 @@ return collectionEnterC.get(randomElement);]]></Body>
 						<RelativeWidth>0.69</RelativeWidth>
 					</Bars>
     			</BarChart>
+				<Group>
+					<Id>1624153550867</Id>
+					<Name><![CDATA[Test]]></Name>
+					<X>100</X><Y>160</Y>
+					<Label><X>-20</X><Y>20</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<Curve ControlPoints="true">
+					<Id>1624153550869</Id>
+					<Name><![CDATA[shapeBody]]></Name>
+					<X>-2</X><Y>-7</Y>
+					<Label><X>-20</X><Y>28</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<FillColor>-16777216</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<Points>
+					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+					   <Point><X>0</X><Y>4</Y><Z>0</Z></Point>
+					   <Point><X>3</X><Y>2</Y><Z>0</Z></Point>
+					   <Point><X>-1</X><Y>3</Y><Z>0</Z></Point>
+					   <Point><X>-2</X><Y>3</Y><Z>0</Z></Point>
+					   <Point><X>-2</X><Y>10</Y><Z>0</Z></Point>
+					   <Point><X>-2</X><Y>11</Y><Z>0</Z></Point>
+					   <Point><X>0</X><Y>11</Y><Z>0</Z></Point>
+					   <Point><X>-1</X><Y>9</Y><Z>0</Z></Point>
+					   <Point><X>0</X><Y>17</Y><Z>0</Z></Point>
+					   <Point><X>1</X><Y>17</Y><Z>0</Z></Point>
+					   <Point><X>3</X><Y>17</Y><Z>0</Z></Point>
+					   <Point><X>4</X><Y>17</Y><Z>0</Z></Point>
+					   <Point><X>5</X><Y>9</Y><Z>0</Z></Point>
+					   <Point><X>4</X><Y>11</Y><Z>0</Z></Point>
+					   <Point><X>6</X><Y>11</Y><Z>0</Z></Point>
+					   <Point><X>6</X><Y>10</Y><Z>0</Z></Point>
+					   <Point><X>6</X><Y>3</Y><Z>0</Z></Point>
+					   <Point><X>5</X><Y>3</Y><Z>0</Z></Point>
+					   <Point><X>1</X><Y>2</Y><Z>0</Z></Point>
+					   <Point><X>4</X><Y>4</Y><Z>0</Z></Point>
+					   <Point><X>4</X><Y>0</Y><Z>0</Z></Point>
+					   <Point><X>4</X><Y>-3</Y><Z>0</Z></Point>
+					   <Point><X>0</X><Y>-3</Y><Z>0</Z></Point>
+					</Points>
+					<Closed>true</Closed>
+				</Curve>
+			</Presentation>
+
+				</Group>
 			</Presentation>
 
 				</Level>
@@ -8447,7 +8514,7 @@ T agent - the agent.
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[5]]></Code>
+							<Code><![CDATA[3]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1623802250781</Id>
@@ -9412,7 +9479,7 @@ T agent - the agent.
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[5]]></Code>
+							<Code><![CDATA[3]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1623817602185</Id>
@@ -10638,9 +10705,9 @@ T agent - the agent.
 		<MaximumMemory>512</MaximumMemory>
 		<ModelTimeProperties>
 			<StopOption><![CDATA[Stop at specified time]]></StopOption>
-			<InitialDate><![CDATA[1624060800000]]></InitialDate>	
+			<InitialDate><![CDATA[1623974400000]]></InitialDate>	
 			<InitialTime><![CDATA[0.0]]></InitialTime>	
-			<FinalDate><![CDATA[1624147200000]]></FinalDate>	
+			<FinalDate><![CDATA[1624060800000]]></FinalDate>	
 			<FinalTime><![CDATA[1440.0]]></FinalTime>	
 		</ModelTimeProperties>
 		<AnimationProperties>
@@ -10730,9 +10797,9 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 			</PresentationProperties>
 			<ModelTimeProperties>
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
-				<InitialDate><![CDATA[1624060800000]]></InitialDate>	
+				<InitialDate><![CDATA[1623974400000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1624147200000]]></FinalDate>	
+				<FinalDate><![CDATA[1624060800000]]></FinalDate>	
 				<FinalTime><![CDATA[1440.0]]></FinalTime>	
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
