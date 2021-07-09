@@ -234,22 +234,6 @@
 						<Color>-4565549</Color>
 					</Properties>
 				</Variable>
-				<Variable Class="StockVariable">
-					<Id>1625715241089</Id>
-					<Name><![CDATA[TotalBenefitsPaid]]></Name>
-					<X>840</X><Y>430</Y>
-					<Label><X>-45</X><Y>45</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties Array="false">
-					<EquationStyle>classic</EquationStyle>
-					<Width>80</Width>
-					<Height>60</Height>
-						<InitialValue><![CDATA[0]]></InitialValue>
-						<Color>-16744448</Color>
-					</Properties>
-				</Variable>
 				<Variable Class="Flow">
 					<Id>1625023104180</Id>
 					<Name><![CDATA[NewTaxPayersFlow]]></Name>
@@ -315,7 +299,7 @@
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties SourceId="1625200679564" TargetId="1625715241089" External="false" Constant="false" Array="false">
+					<Properties SourceId="1625200679564" External="false" Constant="false" Array="false">
 						<Formula><![CDATA[BenefitsPaidPerYear]]></Formula>
 						<Color/>
 						<ValveIndex>1</ValveIndex>
@@ -1198,9 +1182,19 @@
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
-						<Title><![CDATA[SocialSecurityFund]]></Title>
+						<Title><![CDATA[SS_TaxesPaid]]></Title>
 					<Id>0</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-16744448</Color>
+					<Expression2><![CDATA[SS_TaxesPaid]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[SocialSecurityFund]]></Title>
+					<Id>0</Id>
+					<Expression><![CDATA[my_dataset2]]></Expression>
 					<Color>-10496</Color>
 					<Expression2><![CDATA[SocialSecurityFund]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
@@ -1210,19 +1204,9 @@
 					<DatasetExpression>  
 						<Title><![CDATA[SS_Benefits]]></Title>
 					<Id>0</Id>
-					<Expression><![CDATA[my_dataset2]]></Expression>
-					<Color>-8388480</Color>
-					<Expression2><![CDATA[SS_Benefits]]></Expression2>
-					<Expression2Flag>true</Expression2Flag>
-						<PointStyle>NONE</PointStyle>
-						<LineWidth>2.0</LineWidth>
-					</DatasetExpression>
-					<DatasetExpression>  
-						<Title><![CDATA[TotalBenefitsPaid]]></Title>
-					<Id>0</Id>
 					<Expression><![CDATA[my_dataset3]]></Expression>
-					<Color>-16744448</Color>
-					<Expression2><![CDATA[TotalBenefitsPaid]]></Expression2>
+					<Color>-65536</Color>
+					<Expression2><![CDATA[SS_Benefits]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
