@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.4.202104291558" AlpVersion="8.7.2">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.4.202104291627" AlpVersion="8.7.2">
 <Model>
 	<Id>1626210004214</Id>
 	<Name><![CDATA[Pop3]]></Name>
@@ -110,58 +110,89 @@
 			<CurrentLevel>1626210004219</CurrentLevel>
 			<ConnectionsId>1626210004215</ConnectionsId>
 			<Variables>
+				<Variable Class="AuxVariable">
+					<Id>1626319251013</Id>
+					<Name><![CDATA[NewBorns]]></Name>
+					<X>220</X><Y>300</Y>
+					<Label><X>-25</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="false" Array="false">
+						<Formula><![CDATA[Adult * FertilityRate ]]></Formula>
+						<Value><![CDATA[0]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1626319613781</Id>
+					<Name><![CDATA[GestationPeriod]]></Name>
+					<Description><![CDATA[9 months]]></Description>
+					<X>80</X><Y>300</Y>
+					<Label><X>-40</X><Y>15</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="true" Array="false">
+						<Formula><![CDATA[0]]></Formula>
+						<Value><![CDATA[0.75]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
 				<Variable Class="StockVariable">
 					<Id>1626210028979</Id>
 					<Name><![CDATA[Youth]]></Name>
-					<X>320</X><Y>260</Y>
-					<Label><X>0</X><Y>-20</Y></Label>
+					<X>290</X><Y>240</Y>
+					<Label><X>-20</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Array="false">
 					<EquationStyle>classic</EquationStyle>
-					<Width>120</Width>
-					<Height>80</Height>
-						<InitialValue><![CDATA[0]]></InitialValue>
-						<Color/>
+					<Width>80</Width>
+					<Height>60</Height>
+						<InitialValue><![CDATA[40]]></InitialValue>
+						<Color>-16181</Color>
 					</Properties>
 				</Variable>
 				<Variable Class="StockVariable">
 					<Id>1626210031234</Id>
 					<Name><![CDATA[Adult]]></Name>
-					<X>570</X><Y>260</Y>
-					<Label><X>0</X><Y>-20</Y></Label>
+					<X>540</X><Y>240</Y>
+					<Label><X>-20</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Array="false">
 					<EquationStyle>classic</EquationStyle>
-					<Width>120</Width>
-					<Height>80</Height>
-						<InitialValue><![CDATA[0]]></InitialValue>
-						<Color/>
+					<Width>80</Width>
+					<Height>60</Height>
+						<InitialValue><![CDATA[200]]></InitialValue>
+						<Color>-7278960</Color>
 					</Properties>
 				</Variable>
 				<Variable Class="StockVariable">
 					<Id>1626210104199</Id>
 					<Name><![CDATA[Elders]]></Name>
-					<X>820</X><Y>260</Y>
-					<Label><X>0</X><Y>-20</Y></Label>
+					<X>800</X><Y>240</Y>
+					<Label><X>-20</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Array="false">
 					<EquationStyle>classic</EquationStyle>
-					<Width>120</Width>
-					<Height>80</Height>
-						<InitialValue><![CDATA[0]]></InitialValue>
-						<Color/>
+					<Width>80</Width>
+					<Height>60</Height>
+						<InitialValue><![CDATA[80]]></InitialValue>
+						<Color>-744352</Color>
 					</Properties>
 				</Variable>
 				<Variable Class="Flow">
 					<Id>1626210075332</Id>
 					<Name><![CDATA[Mature]]></Name>
-					<X>320</X><Y>260</Y>
+					<X>290</X><Y>240</Y>
 					<Label><X>-20</X><Y>20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -172,7 +203,7 @@
 						<ValveIndex>1</ValveIndex>
 						<Points>
 							<Point><X>0</X><Y>0</Y></Point>
-							<Point><X>120</X><Y>0</Y></Point>
+							<Point><X>140</X><Y>0</Y></Point>
 							<Point><X>250</X><Y>0</Y></Point>
 						</Points>
 					</Properties>
@@ -180,7 +211,7 @@
 				<Variable Class="Flow">
 					<Id>1626210144783</Id>
 					<Name><![CDATA[Retire]]></Name>
-					<X>570</X><Y>260</Y>
+					<X>540</X><Y>240</Y>
 					<Label><X>-20</X><Y>20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -191,35 +222,35 @@
 						<ValveIndex>1</ValveIndex>
 						<Points>
 							<Point><X>0</X><Y>0</Y></Point>
-							<Point><X>120</X><Y>0</Y></Point>
-							<Point><X>250</X><Y>0</Y></Point>
+							<Point><X>140</X><Y>0</Y></Point>
+							<Point><X>260</X><Y>0</Y></Point>
 						</Points>
 					</Properties>
 				</Variable>
 				<Variable Class="Flow">
 					<Id>1626210172465</Id>
 					<Name><![CDATA[YouthDeaths]]></Name>
-					<X>320</X><Y>260</Y>
-					<Label><X>-70</X><Y>-40</Y></Label>
+					<X>290</X><Y>240</Y>
+					<Label><X>-40</X><Y>-40</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SourceId="1626210028979" External="false" Constant="false" Array="false">
-						<Formula><![CDATA[Youth*YouthDeathRate]]></Formula>
+						<Formula><![CDATA[Youth * YouthDeathRate]]></Formula>
 						<Color/>
 						<ValveIndex>1</ValveIndex>
 						<Points>
 							<Point><X>0</X><Y>0</Y></Point>
-							<Point><X>0</X><Y>-140</Y></Point>
-							<Point><X>70</X><Y>-200</Y></Point>
+							<Point><X>0</X><Y>-150</Y></Point>
+							<Point><X>60</X><Y>-200</Y></Point>
 						</Points>
 					</Properties>
 				</Variable>
 				<Variable Class="Flow">
 					<Id>1626210328823</Id>
 					<Name><![CDATA[AdultDeaths]]></Name>
-					<X>570</X><Y>260</Y>
-					<Label><X>-60</X><Y>-50</Y></Label>
+					<X>540</X><Y>240</Y>
+					<Label><X>-45</X><Y>-35</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -229,7 +260,7 @@
 						<ValveIndex>1</ValveIndex>
 						<Points>
 							<Point><X>0</X><Y>0</Y></Point>
-							<Point><X>0</X><Y>-140</Y></Point>
+							<Point><X>0</X><Y>-150</Y></Point>
 							<Point><X>60</X><Y>-200</Y></Point>
 						</Points>
 					</Properties>
@@ -237,8 +268,8 @@
 				<Variable Class="Flow">
 					<Id>1626210366051</Id>
 					<Name><![CDATA[ElderDeaths]]></Name>
-					<X>820</X><Y>260</Y>
-					<Label><X>-70</X><Y>-45</Y></Label>
+					<X>800</X><Y>240</Y>
+					<Label><X>-45</X><Y>-35</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -248,7 +279,7 @@
 						<ValveIndex>1</ValveIndex>
 						<Points>
 							<Point><X>0</X><Y>0</Y></Point>
-							<Point><X>0</X><Y>-140</Y></Point>
+							<Point><X>0</X><Y>-150</Y></Point>
 							<Point><X>60</X><Y>-200</Y></Point>
 						</Points>
 					</Properties>
@@ -256,47 +287,26 @@
 				<Variable Class="Flow">
 					<Id>1626210398857</Id>
 					<Name><![CDATA[BirthRate]]></Name>
-					<X>90</X><Y>260</Y>
-					<Label><X>0</X><Y>-20</Y></Label>
+					<X>80</X><Y>240</Y>
+					<Label><X>-25</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties TargetId="1626210028979" External="false" Constant="false" Array="false">
-						<Formula><![CDATA[0]]></Formula>
+						<Formula><![CDATA[delay(NewBorns,GestationPeriod,3.8)]]></Formula>
 						<Color/>
 						<ValveIndex>1</ValveIndex>
 						<Points>
 							<Point><X>0</X><Y>0</Y></Point>
 							<Point><X>70</X><Y>0</Y></Point>
-							<Point><X>230</X><Y>0</Y></Point>
+							<Point><X>210</X><Y>0</Y></Point>
 						</Points>
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1626210459492</Id>
-					<Name><![CDATA[parameter]]></Name>
-					<X>160</X><Y>440</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1626210459490</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1626210516270</Id>
 					<Name><![CDATA[YouthDeathRate]]></Name>
-					<X>210</X><Y>110</Y>
+					<X>180</X><Y>90</Y>
 					<Label><X>-55</X><Y>20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -320,7 +330,7 @@
 				<Variable Class="Parameter">
 					<Id>1626210564997</Id>
 					<Name><![CDATA[AdultDeathRate]]></Name>
-					<X>460</X><Y>110</Y>
+					<X>430</X><Y>90</Y>
 					<Label><X>-55</X><Y>20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -329,6 +339,9 @@
 						<Type><![CDATA[double]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.01]]></Code>
+						</DefaultValue>
 						<ParameterEditor>
 							<Id>1626210564995</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -341,7 +354,7 @@
 				<Variable Class="Parameter">
 					<Id>1626210599397</Id>
 					<Name><![CDATA[ElderDeathRate]]></Name>
-					<X>720</X><Y>110</Y>
+					<X>700</X><Y>90</Y>
 					<Label><X>-55</X><Y>25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -365,8 +378,8 @@
 				<Variable Class="Parameter">
 					<Id>1626210879457</Id>
 					<Name><![CDATA[RetiringRate]]></Name>
-					<X>680</X><Y>200</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<X>640</X><Y>180</Y>
+					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -375,7 +388,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.02]]></Code>
+							<Code><![CDATA[0.05]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1626210879455</Id>
@@ -389,8 +402,8 @@
 				<Variable Class="Parameter">
 					<Id>1626210914054</Id>
 					<Name><![CDATA[MaturingRate]]></Name>
-					<X>420</X><Y>200</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<X>370</X><Y>180</Y>
+					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -398,6 +411,9 @@
 						<Type><![CDATA[double]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.10]]></Code>
+						</DefaultValue>
 						<ParameterEditor>
 							<Id>1626210914052</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -410,7 +426,7 @@
 				<Variable Class="Parameter">
 					<Id>1626221549470</Id>
 					<Name><![CDATA[FertilityRate]]></Name>
-					<X>120</X><Y>480</Y>
+					<X>130</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -420,7 +436,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.025]]></Code>
+							<Code><![CDATA[0.018]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1626221549468</Id>
@@ -431,36 +447,15 @@
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
-				<Variable Class="Parameter">
-					<Id>1626221553671</Id>
-					<Name><![CDATA[parameter2]]></Name>
-					<X>250</X><Y>480</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1626221553669</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
 			</Variables>
 			<Dependences>
 				<Link SourceId="1626210028979" TargetId="1626210172465" Polarity="null">
-					<Height>20.0</Height>
+					<Height>28.607</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>0</X><Y>-140</Y></Direction>
+					<Direction><X>9</X><Y>-149</Y></Direction>
 					<Id>1626210416702</Id>
 					<Name><![CDATA[Youth - YouthDeaths]]></Name>
-					<X>320</X><Y>260</Y>
+					<X>290</X><Y>240</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -472,10 +467,10 @@
 				<Link SourceId="1626210031234" TargetId="1626210328823" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>0</X><Y>-140</Y></Direction>
+					<Direction><X>0</X><Y>-150</Y></Direction>
 					<Id>1626210429311</Id>
 					<Name><![CDATA[Adult - AdultDeaths]]></Name>
-					<X>570</X><Y>260</Y>
+					<X>540</X><Y>240</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -487,10 +482,10 @@
 				<Link SourceId="1626210104199" TargetId="1626210366051" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>0</X><Y>-140</Y></Direction>
+					<Direction><X>0</X><Y>-150</Y></Direction>
 					<Id>1626210434035</Id>
 					<Name><![CDATA[Elders - ElderDeaths]]></Name>
-					<X>820</X><Y>260</Y>
+					<X>800</X><Y>240</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -502,10 +497,10 @@
 				<Link SourceId="1626210028979" TargetId="1626210075332" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>120</X><Y>0</Y></Direction>
+					<Direction><X>140</X><Y>0</Y></Direction>
 					<Id>1626210442330</Id>
 					<Name><![CDATA[Youth - Mature]]></Name>
-					<X>320</X><Y>260</Y>
+					<X>290</X><Y>240</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -517,10 +512,10 @@
 				<Link SourceId="1626210031234" TargetId="1626210144783" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>120</X><Y>0</Y></Direction>
+					<Direction><X>140</X><Y>0</Y></Direction>
 					<Id>1626210447081</Id>
 					<Name><![CDATA[Adult - Retire]]></Name>
-					<X>570</X><Y>260</Y>
+					<X>540</X><Y>240</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -529,13 +524,14 @@
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1626210031234" TargetId="1626210398857" Polarity="null">
-					<Height>135.056</Height>
+				<Link SourceId="1626210031234" TargetId="1626319251013" Polarity="+">
+					<Height>99.709</Height>
+					<Polarity>+</Polarity>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>-410</X><Y>0</Y></Direction>
+					<Direction><X>-320</X><Y>60</Y></Direction>
 					<Id>1626210462067</Id>
-					<Name><![CDATA[Adult - BirthRate]]></Name>
-					<X>570</X><Y>260</Y>
+					<Name><![CDATA[Adult - NewBorns]]></Name>
+					<X>540</X><Y>240</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -544,13 +540,13 @@
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1626210459492" TargetId="1626210398857" Polarity="null">
-					<Height>20.0</Height>
+				<Link SourceId="1626319613781" TargetId="1626210398857" Polarity="null">
+					<Height>9.336</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>0</X><Y>-180</Y></Direction>
+					<Direction><X>70</X><Y>-60</Y></Direction>
 					<Id>1626210478644</Id>
-					<Name><![CDATA[parameter - BirthRate]]></Name>
-					<X>160</X><Y>440</Y>
+					<Name><![CDATA[GestationPeriod - BirthRate]]></Name>
+					<X>80</X><Y>300</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -562,10 +558,10 @@
 				<Link SourceId="1626210516270" TargetId="1626210172465" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>110</X><Y>10</Y></Direction>
+					<Direction><X>110</X><Y>0</Y></Direction>
 					<Id>1626210518314</Id>
 					<Name><![CDATA[YouthDeathRate - YouthDeaths]]></Name>
-					<X>210</X><Y>110</Y>
+					<X>180</X><Y>90</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -577,10 +573,10 @@
 				<Link SourceId="1626210564997" TargetId="1626210328823" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>110</X><Y>10</Y></Direction>
+					<Direction><X>110</X><Y>0</Y></Direction>
 					<Id>1626210584835</Id>
 					<Name><![CDATA[AdultDeathRate - AdultDeaths]]></Name>
-					<X>460</X><Y>110</Y>
+					<X>430</X><Y>90</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -592,10 +588,10 @@
 				<Link SourceId="1626210599397" TargetId="1626210366051" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>100</X><Y>10</Y></Direction>
+					<Direction><X>100</X><Y>0</Y></Direction>
 					<Id>1626210634047</Id>
 					<Name><![CDATA[ElderDeathRate - ElderDeaths]]></Name>
-					<X>720</X><Y>110</Y>
+					<X>700</X><Y>90</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -607,10 +603,10 @@
 				<Link SourceId="1626210879457" TargetId="1626210144783" Polarity="null">
 					<Height>23.774</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>10</X><Y>60</Y></Direction>
+					<Direction><X>40</X><Y>60</Y></Direction>
 					<Id>1626210894973</Id>
 					<Name><![CDATA[RetiringRate - Retire]]></Name>
-					<X>680</X><Y>200</Y>
+					<X>640</X><Y>180</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -622,10 +618,10 @@
 				<Link SourceId="1626210914054" TargetId="1626210075332" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>20</X><Y>60</Y></Direction>
+					<Direction><X>60</X><Y>60</Y></Direction>
 					<Id>1626210926157</Id>
 					<Name><![CDATA[MaturingRate - Mature]]></Name>
-					<X>420</X><Y>200</Y>
+					<X>370</X><Y>180</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -634,13 +630,13 @@
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1626221549470" TargetId="1626210398857" Polarity="null">
-					<Height>20.0</Height>
+				<Link SourceId="1626221549470" TargetId="1626319251013" Polarity="null">
+					<Height>8.522</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>40</X><Y>-220</Y></Direction>
+					<Direction><X>90</X><Y>-90</Y></Direction>
 					<Id>1626221556441</Id>
-					<Name><![CDATA[FertilityRate - BirthRate]]></Name>
-					<X>120</X><Y>480</Y>
+					<Name><![CDATA[FertilityRate - NewBorns]]></Name>
+					<X>130</X><Y>390</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -649,13 +645,13 @@
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1626221553671" TargetId="1626210398857" Polarity="null">
+				<Link SourceId="1626319251013" TargetId="1626210398857" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>-90</X><Y>-220</Y></Direction>
-					<Id>1626221563984</Id>
-					<Name><![CDATA[parameter2 - BirthRate]]></Name>
-					<X>250</X><Y>480</Y>
+					<Direction><X>-70</X><Y>-60</Y></Direction>
+					<Id>1626319350492</Id>
+					<Name><![CDATA[NewBorns - BirthRate]]></Name>
+					<X>220</X><Y>300</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -670,7 +666,7 @@
 					<Type><![CDATA[R]]></Type>
 					<Id>1626222900646</Id>
 					<Name><![CDATA[loop]]></Name>
-					<X>360</X><Y>360</Y>
+					<X>370</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -715,6 +711,109 @@
 					<Z>0</Z>
 					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
 
+			<Presentation>
+    			<TimePlot>
+					<Id>1626454932301</Id>
+					<Name><![CDATA[BirthsAndDeathsPerYearPlot]]></Name>
+					<X>250</X><Y>390</Y>
+					<Label><X>145</X><Y>220</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1626508800000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[YEAR]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[YEAR]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>430</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>350</Width>
+						<Height>120</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[BirthsPerYear]]></Title>
+					<Id>0</Id>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-16744448</Color>
+					<Expression2><![CDATA[BirthRate]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[DeathsPerYear]]></Title>
+					<Id>0</Id>
+					<Expression><![CDATA[my_dataset1]]></Expression>
+					<Color>-65536</Color>
+					<Expression2><![CDATA[(YouthDeaths + AdultDeaths + ElderDeaths)]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>200</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[50]]></TimeWindowExpression>
+					<FillAreaUnderLine>false</FillAreaUnderLine>
+					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
+    			</TimePlot>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1626455706008</Id>
+					<Name><![CDATA[FertilityRateSlider]]></Name>
+					<X>100</X><Y>400</Y>
+					<Label><X>5</X><Y>40</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0.0177]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0.001]]></MinValue>
+						<MaxValue><![CDATA[0.04]]></MaxValue>
+						<Step><![CDATA[0.001]]></Step>
+						<LinkTo>true</LinkTo>
+						<Link>FertilityRate</Link>
+					</ExtendedProperties>
+				</Control>
+			</Presentation>
 
 				</Level>
 			</Presentation>
@@ -730,7 +829,7 @@
 	<TimeAccuracy>1.0E-5</TimeAccuracy>
 	<Frame>
 		<Width>1000</Width>
-		<Height>600</Height>
+		<Height>650</Height>
 	</Frame>
 	<Database>
 		<Logging>false</Logging>
@@ -748,13 +847,13 @@
 		<MaximumMemory>512</MaximumMemory>
 		<ModelTimeProperties>
 			<StopOption><![CDATA[Stop at specified time]]></StopOption>
-			<InitialDate><![CDATA[1626134400000]]></InitialDate>	
+			<InitialDate><![CDATA[1626480000000]]></InitialDate>	
 			<InitialTime><![CDATA[0.0]]></InitialTime>	
-			<FinalDate><![CDATA[1628812800000]]></FinalDate>	
-			<FinalTime><![CDATA[100.0]]></FinalTime>	
+			<FinalDate><![CDATA[3203280000000]]></FinalDate>	
+			<FinalTime><![CDATA[50.0]]></FinalTime>	
 		</ModelTimeProperties>
 		<AnimationProperties>
-			<StopNever>true</StopNever>
+			<StopNever>false</StopNever>
 			<ExecutionMode>realTimeScaled</ExecutionMode>
 			<RealTimeScale>1.0</RealTimeScale>
 			<EnableZoomAndPanning>true</EnableZoomAndPanning>
@@ -795,7 +894,7 @@
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12490271</Color>
-					<Text><![CDATA[Pop3]]></Text>
+					<Text><![CDATA[Pop3-Model]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>24</Size>
@@ -803,12 +902,35 @@
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1626459134291</Id>
+					<Name><![CDATA[button]]></Name>
+					<X>40</X><Y>80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[if ( getState() == IDLE )
+	run();
+getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Run]]></LabelText>
+						<LabelCode><![CDATA[getState() == IDLE ?
+	"Run" :
+	"Top level agent"]]></LabelCode>
+					</ExtendedProperties>
+				</Control>
 			</Presentation>
 
 			<Parameters>			
-				<Parameter>
-					<ParameterName><![CDATA[parameter]]></ParameterName>
-				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[YouthDeathRate]]></ParameterName>
 				</Parameter>
@@ -827,9 +949,6 @@
 				<Parameter>
 					<ParameterName><![CDATA[FertilityRate]]></ParameterName>
 				</Parameter>
-				<Parameter>
-					<ParameterName><![CDATA[parameter2]]></ParameterName>
-				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
@@ -840,11 +959,11 @@
 				<RealTimeScale>1.0</RealTimeScale>
 			</PresentationProperties>
 			<ModelTimeProperties>
-				<StopOption><![CDATA[Never]]></StopOption>
-				<InitialDate><![CDATA[1626134400000]]></InitialDate>	
+				<StopOption><![CDATA[Stop at specified time]]></StopOption>
+				<InitialDate><![CDATA[1626480000000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1628812800000]]></FinalDate>	
-				<FinalTime><![CDATA[100.0]]></FinalTime>	
+				<FinalDate><![CDATA[3203280000000]]></FinalDate>	
+				<FinalTime><![CDATA[50.0]]></FinalTime>	
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
 		</SimulationExperiment>	
