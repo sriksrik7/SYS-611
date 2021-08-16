@@ -24,6 +24,59 @@ def is_player1_win_coin_flip():
 
 
 ################################ Start of function ##############################
+# Function Name: process_input_statistics_data
+# Description: function to read all players statistics data for a given worksheet
+#              title name
+# Return: None
+#################################################################################
+def process_input_statistics_data(worksheet_title_name):
+    # Load the work book:
+    wb_obj = load_workbook('Statistics_Data.xlsx')
+    # Read the user provided workbook
+    stat_sheet = wb_obj[worksheet_title_name]
+
+    cellnum = 1
+    for player in players:
+        cellnum += 1
+        player.set_name(stat_sheet[f'A{cellnum}'].value)
+        player.set_stat(player.ACE, stat_sheet[f'D{cellnum}'].value * 100)
+        player.set_stat(player.DOUBLE_FAULT, stat_sheet[f'E{cellnum}'].value * 100)
+        player.set_stat(player.FIRST_SERVE, stat_sheet[f'F{cellnum}'].value * 100)
+        player.set_stat(player.FIRST_SERVE_WON, stat_sheet[f'G{cellnum}'].value * 100)
+        player.set_stat(player.SECOND_SERVE_WON, stat_sheet[f'H{cellnum}'].value * 100)
+        player.set_stat(player.BREAK_POINT_SAVED, stat_sheet[f'I{cellnum}'].value * 100)
+        player.set_stat(player.SERVICE_POINTS_WON, stat_sheet[f'J{cellnum}'].value * 100)
+        player.set_stat(player.SERVICE_GAMES_WON, stat_sheet[f'K{cellnum}'].value * 100)
+        player.set_stat(player.ACE_AGAINST, stat_sheet[f'L{cellnum}'].value * 100)
+        player.set_stat(player.FIRST_SERVE_RET_WON, stat_sheet[f'M{cellnum}'].value * 100)
+        player.set_stat(player.SECOND_SERVE_RET_WON, stat_sheet[f'N{cellnum}'].value * 100)
+        player.set_stat(player.BREAK_POINTS_WON, stat_sheet[f'O{cellnum}'].value * 100)
+        player.set_stat(player.RET_POINTS_WON, stat_sheet[f'P{cellnum}'].value * 100)
+        player.set_stat(player.RET_GAMES_WON, stat_sheet[f'Q{cellnum}'].value * 100)
+
+    # Close the workbook after reading
+    wb_obj.close()
+
+################################ End of function ################################
+
+
+################################ Start of function ##############################
+# Function Name: get_player_index
+# Description: function to get player index from a list of 32 players
+# Return: returns player index from a list of 32 players
+#################################################################################
+def get_player_index(p_name):
+    ret_player_index = int()
+    # Loop through all 32 players to get the index for a given player name
+    for p_idx in range(32):
+        if (players[p_idx].get_name() == p_name):
+            ret_player_index = p_idx
+            break
+    return ret_player_index
+################################ End of function ################################
+
+
+################################ Start of function ##############################
 # Function Name: simulate_set
 # Description: Function to simulate a set in Tennis
 # Return: returns a string contains the wining player's rank/index, player 1 score,
@@ -369,19 +422,241 @@ def simulate_matches(cell_num, num_matches, match_detail_list, mtc_result_ws):
 
 
 ################################ Start of function ##############################
-# Function Name: get_player_index
-# Description: function to get player index from a list of 32 players
-# Return: returns player index from a list of 32 players
+# Function Name: simulate_tournament
+# Description: function to simulate all matches for men singles tennis tournament
+# Return: returns the  final winner name
 #################################################################################
-def get_player_index(p_name):
-    ret_player_index = int()
-    # Loop through all 32 players to get the index for a given player name
-    for p_idx in range(32):
-        # print(f"p_idx->{p_idx}: players->{players[p_idx].get_name()}: p_name->{p_name}")
-        if (players[p_idx].get_name() == p_name):
-            ret_player_index = p_idx
-            break
-    return ret_player_index
+# Simulate Men's singles Wimbledon tournament
+def simulate_tournament(simulation_num, workbook_obj, sim_year):
+
+    # Variables to hold winners for each stage of tournament
+    first_round_winners = []
+    scnd_round_winners = []
+    quarter_final_winners = []
+    semi_final_winners = []
+
+    # Cell start index numbers for each stage of tournament
+    rd1_cell_index = 2
+    rd2_cell_index = 37
+    qf_cell_index = 56
+    sf_cell_index = 67
+    final_cell_index = 74
+    champ_cell_index = 78
+
+    #########################################################
+    ####### Populate and process first round matches #######
+
+    ####### Bracket seeding for 32 players #######
+    # Top 16 out of 32 players are played againts the lower 16 players.
+    # Lower 16 players are randomly allocated to play against the top 16 players
+    # This is to avoid strong players playing against each other in the intial stages of tournament.
+    # This type seeding is followed in Wembledom tournament to make the final games challening.
+
+    sim_num = simulation_num +1
+    sch_res_ws = workbook_obj.create_sheet("Mysheet")
+    sch_res_ws.title = f"Sim{sim_num}_results"
+
+    sch_res_ws[f'A{rd1_cell_index-1}'] = "Wimbledon Round 1"
+    sch_res_ws[f'A{rd1_cell_index}'] = "Match"
+    sch_res_ws[f'B{rd1_cell_index}'] = "Rank"
+    sch_res_ws[f'C{rd1_cell_index}'] = "Player Name"
+
+    # Create a match details list to incude match number and player 1 ranking.
+    # This match details list can be used to subscript each player statistics data based on their ranking.
+    # Holds match number along with player1 and player 2's index/rank details
+    first_rd_match_list = []
+    rd1_cell = rd1_cell_index
+    for index in range(16):
+        rd1_cell+=1
+        sch_res_ws[f'A{rd1_cell}'] = index+1
+        sch_res_ws[f'B{rd1_cell}'] = index+1
+        sch_res_ws[f'C{rd1_cell}'] = players[index].get_name()
+        first_rd_match_list.append({'match_index':(index+1),'player1_index':(index)})
+        rd1_cell+=1
+
+    # Randomly assign the lower 16 players to play against the top 16 players.
+    processed_numbers = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+    cell_sch = rd1_cell_index
+    for sch_index in range(16):
+        rank = random.choice(processed_numbers)
+        processed_numbers.remove(rank)
+        cell_sch+=2
+        sch_res_ws[f'B{cell_sch}'] = rank+1
+        sch_res_ws[f'C{cell_sch}'] = players[rank].get_name()
+        first_rd_match_list[sch_index]['player2_index'] = rank
+
+    # print(first_rd_match_list)
+    # Save the bracket seeding schedule into a spread sheet.
+    workbook_obj.save(f"Wimbledon_Model_Results_{sim_year}.xlsx")
+
+    # Simulate matches for first round
+    first_round_winners = simulate_matches(rd1_cell_index, 16, first_rd_match_list, sch_res_ws)
+
+    # Save the results of first round matches
+    workbook_obj.save(f"Wimbledon_Model_Results_{sim_year}.xlsx")
+
+    #########################################################
+    ####### Populate and process second round matches #######
+
+    sch_res_ws[f'A{rd2_cell_index-1}'] = "Wimbledon Round 2"
+    sch_res_ws[f'A{rd2_cell_index}'] = "Match"
+    sch_res_ws[f'B{rd2_cell_index}'] = "Rank"
+    sch_res_ws[f'C{rd2_cell_index}'] = "Player Name"
+
+    # Schedule second round matches
+    scnd_rd_match_list = []
+    rd2_top_cell = rd2_cell_index
+    for win_rd1_top_index in range(8):
+        rd2_top_cell+=1
+        # Fetch player indices from the list of 32 players to simulate second round matches
+        pl1_index = get_player_index(first_round_winners[win_rd1_top_index])
+
+        # Populate second round schedule from first round winners.
+        sch_res_ws[f'A{rd2_top_cell}'] = win_rd1_top_index+1
+        sch_res_ws[f'B{rd2_top_cell}'] = pl1_index+1
+        sch_res_ws[f'C{rd2_top_cell}'] = first_round_winners[win_rd1_top_index]
+        # Generate a list of dictionaries for second round matches
+        scnd_rd_match_list.append({'match_index':(win_rd1_top_index+1),'player1_index':(pl1_index)})
+        rd2_top_cell+=1
+
+    rd2_low_cell = (rd2_cell_index+17)
+    for win_rd1_low_index in reversed(range(8)):
+        rd2_low_cell-=1
+        pl2_index = get_player_index(first_round_winners[win_rd1_low_index+8])
+        sch_res_ws[f'B{rd2_low_cell}'] = pl2_index+1
+        sch_res_ws[f'C{rd2_low_cell}'] = first_round_winners[win_rd1_low_index+8]
+        # Generate a list of dictionaries for second round matches
+        scnd_rd_match_list[win_rd1_low_index]['player2_index'] = pl2_index
+        rd2_low_cell-=1
+
+    # Save the second round schedule into a spread sheet.
+    workbook_obj.save(f"Wimbledon_Model_Results_{sim_year}.xlsx")
+
+    # Simulate matches for second round
+    scnd_round_winners = simulate_matches(rd2_cell_index, 8, scnd_rd_match_list, sch_res_ws)
+
+    # Save the second round results into a spread sheet.
+    workbook_obj.save(f"Wimbledon_Model_Results_{sim_year}.xlsx")
+
+    ##########################################################
+    ####### Populate and process quarter final matches #######
+    sch_res_ws[f'A{qf_cell_index-1}'] = "Wimbledon Quarter Finals"
+    sch_res_ws[f'A{qf_cell_index}'] = "Match"
+    sch_res_ws[f'B{qf_cell_index}'] = "Rank"
+    sch_res_ws[f'C{qf_cell_index}'] = "Player Name"
+
+    # Schedule quarter final matches
+    qf_match_list = []
+    qf_cell = qf_cell_index
+    win_rd2_index = 0
+    for index in range(4):
+        qf_cell+=1
+        # Fetch player indices from the list of 32 players to simulate quarter final matches
+        pl1_index = get_player_index(scnd_round_winners[win_rd2_index])
+        pl2_index = get_player_index(scnd_round_winners[win_rd2_index+1])
+
+        # Populate quarter final schedule from second round winners.
+        sch_res_ws[f'A{qf_cell}'] = index+1
+        sch_res_ws[f'B{qf_cell}'] = pl1_index+1
+        sch_res_ws[f'C{qf_cell}'] = scnd_round_winners[win_rd2_index]
+        sch_res_ws[f'B{qf_cell+1}'] = pl2_index+1
+        sch_res_ws[f'C{qf_cell+1}'] = scnd_round_winners[win_rd2_index+1]
+        # Generate a list of dictionaries for quarter final matches
+        qf_match_list.append({'match_index':(index+1),'player1_index':(pl1_index),'player2_index':(pl2_index)})
+        qf_cell+=1
+        win_rd2_index+=2
+
+    # Save the quarter final schedule into a spread sheet.
+    workbook_obj.save(f"Wimbledon_Model_Results_{sim_year}.xlsx")
+
+    # Simulate matches for quarter final
+    quarter_final_winners = simulate_matches(qf_cell_index, 4, qf_match_list, sch_res_ws)
+
+    # Save the quarter final results into a spread sheet.
+    workbook_obj.save(f"Wimbledon_Model_Results_{sim_year}.xlsx")
+
+    ##########################################################
+    ####### Populate and process semi final matches #######
+    sch_res_ws[f'A{sf_cell_index-1}'] = "Wimbledon Semi Final"
+    sch_res_ws[f'A{sf_cell_index}'] = "Match"
+    sch_res_ws[f'B{sf_cell_index}'] = "Rank"
+    sch_res_ws[f'C{sf_cell_index}'] = "Player Name"
+
+    # Schedule semi final matches
+    sf_match_list = []
+    sf_cell = sf_cell_index
+    win_qf_index = 0
+    for index in range(2):
+        sf_cell+=1
+        # Fetch player indices from the list of 32 players to simulate semi final matches
+        pl1_index = get_player_index(quarter_final_winners[win_qf_index])
+        pl2_index = get_player_index(quarter_final_winners[win_qf_index+1])
+
+        # Populated semi final schedule from quarter final winners.
+        sch_res_ws[f'A{sf_cell}'] = index+1
+        sch_res_ws[f'B{sf_cell}'] = pl1_index+1
+        sch_res_ws[f'C{sf_cell}'] = quarter_final_winners[win_qf_index]
+        sch_res_ws[f'B{sf_cell+1}'] = pl2_index+1
+        sch_res_ws[f'C{sf_cell+1}'] = quarter_final_winners[win_qf_index+1]
+        # Generate a list of dictionaries for semi final matches
+        sf_match_list.append({'match_index':(index+1),'player1_index':(pl1_index),'player2_index':(pl2_index)})
+        sf_cell+=1
+        win_qf_index+=2
+
+    # Save the semi final schedule into a spread sheet.
+    workbook_obj.save(f"Wimbledon_Model_Results_{sim_year}.xlsx")
+
+    # Simulate matches for semi final
+    semi_final_winners = simulate_matches(sf_cell_index, 2, sf_match_list, sch_res_ws)
+
+    # Save the semi final results into a spread sheet.
+    workbook_obj.save(f"Wimbledon_Model_Results_{sim_year}.xlsx")
+
+    ##########################################################
+    ####### Populate and process final match #################
+    sch_res_ws[f'A{final_cell_index-1}'] = "Wimbledon Final"
+    sch_res_ws[f'A{final_cell_index}'] = "Match"
+    sch_res_ws[f'B{final_cell_index}'] = "Rank"
+    sch_res_ws[f'C{final_cell_index}'] = "Player Name"
+
+    # Schedule final matche
+    final_match_list = []
+
+    # Fetch player indices from the list of 32 players to simulate final match
+    pl1_index = get_player_index(semi_final_winners[0])
+    pl2_index = get_player_index(semi_final_winners[1])
+
+    # Populate final schedule from semi final winners.
+    sch_res_ws[f'A{final_cell_index+1}'] = 1
+    sch_res_ws[f'B{final_cell_index+1}'] = pl1_index+1
+    sch_res_ws[f'C{final_cell_index+1}'] = semi_final_winners[0]
+    sch_res_ws[f'B{final_cell_index+2}'] = pl2_index+1
+    sch_res_ws[f'C{final_cell_index+2}'] = semi_final_winners[1]
+    # Generate a list of dictionaries for final matche
+    final_match_list.append({'match_index':(1),'player1_index':(pl1_index),'player2_index':(pl2_index)})
+
+    # Save the final schedule into a spread sheet.
+    workbook_obj.save(f"Wimbledon_Model_Results_{sim_year}.xlsx")
+
+    # Simulate matches for final
+    final_winner = simulate_matches(final_cell_index, 1, final_match_list, sch_res_ws)
+
+    # Record the simulate wimbledon champion
+    # Fetch player indices from the list of 32 players to simulate final match
+    Champ_pl_index = get_player_index(final_winner[0])
+    sch_res_ws[f'A{champ_cell_index}'] = "Wimbledon Champion"
+    sch_res_ws[f'B{champ_cell_index}'] = "Rank"
+    sch_res_ws[f'C{champ_cell_index}'] = "Player Name"
+
+    sch_res_ws[f'B{champ_cell_index+1}'] = Champ_pl_index+1
+    sch_res_ws[f'C{champ_cell_index+1}'] = final_winner[0]
+
+    # print(f"The wimbledon Champion is {final_winner[0]}")
+    # Save the final results into a spread sheet.
+    workbook_obj.save(f"Wimbledon_Model_Results_{sim_year}.xlsx")
+
+    return final_winner[0]
+
 ################################ End of function ################################
 
 
@@ -389,25 +664,13 @@ def get_player_index(p_name):
 ########################     Main  Starts Here       ############################
 #################################################################################
 
-
 # Global Variables
 players = []
-first_round_winners = []
-scnd_round_winners = []
-quarter_final_winners = []
-semi_final_winners = []
-
-rd1_cell_index = 2
-rd2_cell_index = 37
-qf_cell_index = 56
-sf_cell_index = 67
-final_cell_index = 74
-champ_cell_index = 78
+players = [Tennis_Player() for i in range(32)]
 
 # Take input from the user
 print("Enter the year to simulate Wimbledon tennis tournament")
 sheet_input = input("Choose from following years: 2019, 2018, 2017:\n")
-print("Please be patient it takes about 3 minutes to simulate")
 
 if sheet_input == "2019":
     sheet_title = "2019"
@@ -418,248 +681,46 @@ elif sheet_input == "2017":
 else:
     raise ValueError(f"Invalid input {sheet_input}, Please try again...")
 
-# Load the work book:
-wb_obj = load_workbook('Statistics_Data.xlsx')
-# Read the active sheet:
-stat_sheet = wb_obj[sheet_title]
+# Take input from the user to perform number of simulations
+total_simulations = int(input("Enter the number of simulations to be performed:\nNote: Simulations are limited to 30\n -->"))
 
-players = [Tennis_Player() for i in range(32)]
+if total_simulations > 30:
+    raise ValueError(f"The provided number of simualtions is greater than 30, Please try again...")
 
-cellnum = 1
-for player in players:
-    cellnum +=1
-    player.set_name(stat_sheet[f'A{cellnum}'].value)
-    player.set_stat(player.ACE, stat_sheet[f'D{cellnum}'].value*100)
-    player.set_stat(player.DOUBLE_FAULT, stat_sheet[f'E{cellnum}'].value*100)
-    player.set_stat(player.FIRST_SERVE, stat_sheet[f'F{cellnum}'].value*100)
-    player.set_stat(player.FIRST_SERVE_WON, stat_sheet[f'G{cellnum}'].value*100)
-    player.set_stat(player.SECOND_SERVE_WON, stat_sheet[f'H{cellnum}'].value*100)
-    player.set_stat(player.BREAK_POINT_SAVED, stat_sheet[f'I{cellnum}'].value*100)
-    player.set_stat(player.SERVICE_POINTS_WON, stat_sheet[f'J{cellnum}'].value*100)
-    player.set_stat(player.SERVICE_GAMES_WON, stat_sheet[f'K{cellnum}'].value*100)
-    player.set_stat(player.ACE_AGAINST, stat_sheet[f'L{cellnum}'].value*100)
-    player.set_stat(player.FIRST_SERVE_RET_WON, stat_sheet[f'M{cellnum}'].value*100)
-    player.set_stat(player.SECOND_SERVE_RET_WON, stat_sheet[f'N{cellnum}'].value*100)
-    player.set_stat(player.BREAK_POINTS_WON, stat_sheet[f'O{cellnum}'].value*100)
-    player.set_stat(player.RET_POINTS_WON, stat_sheet[f'P{cellnum}'].value*100)
-    player.set_stat(player.RET_GAMES_WON, stat_sheet[f'Q{cellnum}'].value*100)
+print("Please be patient it takes about 3 minutes to simulate")
 
-# Close the workbook after reading
-wb_obj.close()
+# Process input statistics data for a given sheet name from file Statistics_Data.xlsx
+process_input_statistics_data(sheet_title)
 
-#########################################################
-####### Populate and process first round matches #######
-
-####### Bracket seeding for 32 players #######
-# Top 16 out of 32 players are played againts the lower 16 players.
-# Lower 16 players are randomly allocated to play against the top 16 players
-# This is to avoid strong players playing against each other in the intial stages of tournament.
-# This type seeding is followed in Wembledom tournament to make the final games challening.
-
-# write to new excel with match schedule for initial/second round
+# Create a new work book to record all results of each simulated tournament
 sch_res_wb = Workbook()
-sch_res_ws = sch_res_wb.active
-sim_num = 1
-sch_res_ws.title = f"Sim{sim_num}_results"
 
-sch_res_ws[f'A{rd1_cell_index-1}'] = "Wimbledon Round 1"
-sch_res_ws[f'A{rd1_cell_index}'] = "Match"
-sch_res_ws[f'B{rd1_cell_index}'] = "Rank"
-sch_res_ws[f'C{rd1_cell_index}'] = "Player Name"
+tournament_winners_dict = {}
+# simulate multiple number of tournaments for user provided input simulations
+for sim_idx in range(total_simulations):
+    tournament_winner = simulate_tournament(sim_idx, sch_res_wb, sheet_title)
 
-# Create a match details list to incude match number and player 1 ranking.
-# This match details list can be used to subscript each player statistics data based on their ranking.
-# Holds match number along with player1 and player 2's index/rank details
-first_rd_match_list = []
-rd1_cell = rd1_cell_index
-for index in range(16):
-    rd1_cell+=1
-    sch_res_ws[f'A{rd1_cell}'] = index+1
-    sch_res_ws[f'B{rd1_cell}'] = index+1
-    sch_res_ws[f'C{rd1_cell}'] = players[index].get_name()
-    first_rd_match_list.append({'match_index':(index+1),'player1_index':(index)})
-    rd1_cell+=1
+    if tournament_winner in tournament_winners_dict:
+        tournament_winners_dict[tournament_winner] += 1
+    else:
+        tournament_winners_dict.update({tournament_winner: 1})
 
-# Randomly assign the lower 16 players to play against the top 16 players.
-processed_numbers = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
-cell_sch = rd1_cell_index
-for sch_index in range(16):
-    rank = random.choice(processed_numbers)
-    processed_numbers.remove(rank)
-    cell_sch+=2
-    sch_res_ws[f'B{cell_sch}'] = rank+1
-    sch_res_ws[f'C{cell_sch}'] = players[rank].get_name()
-    first_rd_match_list[sch_index]['player2_index'] = rank
+# Re-use the work "Sheet" for winnerSimInfo
+tournament_winners_ws = sch_res_wb["Sheet"]
+tournament_winners_ws.title = "WinnersSimInfo"
+tournament_winners_ws[f'A1'] = "Tournament Winner Name"
+tournament_winners_ws[f'B1'] = "Number of times won"
 
-# print(first_rd_match_list)
-# Save the bracket seeding schedule into a spread sheet.
-sch_res_wb.save("Wimbledon_Model_Results.xlsx")
+winner_idx = 1
+for winner in tournament_winners_dict:
+    winner_idx +=1
+    tournament_winners_ws[f'A{winner_idx}'] = winner
+    tournament_winners_ws[f'B{winner_idx}'] = tournament_winners_dict[winner]
 
-# Simulate matches for first round
-first_round_winners = simulate_matches(rd1_cell_index, 16, first_rd_match_list, sch_res_ws)
+# Save the spread sheet after updating the WinnersInfo.
+sch_res_wb.save(f"Wimbledon_Model_Results_{sheet_title}.xlsx")
 
-# Save the results of first round matches
-sch_res_wb.save("Wimbledon_Model_Results.xlsx")
-
-#########################################################
-####### Populate and process second round matches #######
-
-sch_res_ws[f'A{rd2_cell_index-1}'] = "Wimbledon Round 2"
-sch_res_ws[f'A{rd2_cell_index}'] = "Match"
-sch_res_ws[f'B{rd2_cell_index}'] = "Rank"
-sch_res_ws[f'C{rd2_cell_index}'] = "Player Name"
-
-# Schedule second round matches
-scnd_rd_match_list = []
-rd2_top_cell = rd2_cell_index
-for win_rd1_top_index in range(8):
-    rd2_top_cell+=1
-    # Fetch player indices from the list of 32 players to simulate second round matches
-    pl1_index = get_player_index(first_round_winners[win_rd1_top_index])
-
-    # Populate second round schedule from first round winners.
-    sch_res_ws[f'A{rd2_top_cell}'] = win_rd1_top_index+1
-    sch_res_ws[f'B{rd2_top_cell}'] = pl1_index+1
-    sch_res_ws[f'C{rd2_top_cell}'] = first_round_winners[win_rd1_top_index]
-    # Generate a list of dictionaries for second round matches
-    scnd_rd_match_list.append({'match_index':(win_rd1_top_index+1),'player1_index':(pl1_index)})
-    rd2_top_cell+=1
-
-rd2_low_cell = (rd2_cell_index+17)
-for win_rd1_low_index in reversed(range(8)):
-    rd2_low_cell-=1
-    pl2_index = get_player_index(first_round_winners[win_rd1_low_index+8])
-    sch_res_ws[f'B{rd2_low_cell}'] = pl2_index+1
-    sch_res_ws[f'C{rd2_low_cell}'] = first_round_winners[win_rd1_low_index+8]
-    # Generate a list of dictionaries for second round matches
-    scnd_rd_match_list[win_rd1_low_index]['player2_index'] = pl2_index
-    rd2_low_cell-=1
-
-# Save the second round schedule into a spread sheet.
-sch_res_wb.save("Wimbledon_Model_Results.xlsx")
-
-# Simulate matches for second round
-scnd_round_winners = simulate_matches(rd2_cell_index, 8, scnd_rd_match_list, sch_res_ws)
-
-# Save the second round results into a spread sheet.
-sch_res_wb.save("Wimbledon_Model_Results.xlsx")
-
-##########################################################
-####### Populate and process quarter final matches #######
-sch_res_ws[f'A{qf_cell_index-1}'] = "Wimbledon Quarter Finals"
-sch_res_ws[f'A{qf_cell_index}'] = "Match"
-sch_res_ws[f'B{qf_cell_index}'] = "Rank"
-sch_res_ws[f'C{qf_cell_index}'] = "Player Name"
-
-# Schedule quarter final matches
-qf_match_list = []
-qf_cell = qf_cell_index
-win_rd2_index = 0
-for index in range(4):
-    qf_cell+=1
-    # Fetch player indices from the list of 32 players to simulate quarter final matches
-    pl1_index = get_player_index(scnd_round_winners[win_rd2_index])
-    pl2_index = get_player_index(scnd_round_winners[win_rd2_index+1])
-
-    # Populate quarter final schedule from second round winners.
-    sch_res_ws[f'A{qf_cell}'] = index+1
-    sch_res_ws[f'B{qf_cell}'] = pl1_index+1
-    sch_res_ws[f'C{qf_cell}'] = scnd_round_winners[win_rd2_index]
-    sch_res_ws[f'B{qf_cell+1}'] = pl2_index+1
-    sch_res_ws[f'C{qf_cell+1}'] = scnd_round_winners[win_rd2_index+1]
-    # Generate a list of dictionaries for quarter final matches
-    qf_match_list.append({'match_index':(index+1),'player1_index':(pl1_index),'player2_index':(pl2_index)})
-    qf_cell+=1
-    win_rd2_index+=2
-
-# Save the quarter final schedule into a spread sheet.
-sch_res_wb.save("Wimbledon_Model_Results.xlsx")
-
-# Simulate matches for quarter final
-quarter_final_winners = simulate_matches(qf_cell_index, 4, qf_match_list, sch_res_ws)
-
-# Save the quarter final results into a spread sheet.
-sch_res_wb.save("Wimbledon_Model_Results.xlsx")
-
-##########################################################
-####### Populate and process semi final matches #######
-sch_res_ws[f'A{sf_cell_index-1}'] = "Wimbledon Semi Final"
-sch_res_ws[f'A{sf_cell_index}'] = "Match"
-sch_res_ws[f'B{sf_cell_index}'] = "Rank"
-sch_res_ws[f'C{sf_cell_index}'] = "Player Name"
-
-# Schedule semi final matches
-sf_match_list = []
-sf_cell = sf_cell_index
-win_qf_index = 0
-for index in range(2):
-    sf_cell+=1
-    # Fetch player indices from the list of 32 players to simulate semi final matches
-    pl1_index = get_player_index(quarter_final_winners[win_qf_index])
-    pl2_index = get_player_index(quarter_final_winners[win_qf_index+1])
-
-    # Populated semi final schedule from quarter final winners.
-    sch_res_ws[f'A{sf_cell}'] = index+1
-    sch_res_ws[f'B{sf_cell}'] = pl1_index+1
-    sch_res_ws[f'C{sf_cell}'] = quarter_final_winners[win_qf_index]
-    sch_res_ws[f'B{sf_cell+1}'] = pl2_index+1
-    sch_res_ws[f'C{sf_cell+1}'] = quarter_final_winners[win_qf_index+1]
-    # Generate a list of dictionaries for semi final matches
-    sf_match_list.append({'match_index':(index+1),'player1_index':(pl1_index),'player2_index':(pl2_index)})
-    sf_cell+=1
-    win_qf_index+=2
-
-# Save the semi final schedule into a spread sheet.
-sch_res_wb.save("Wimbledon_Model_Results.xlsx")
-
-# Simulate matches for semi final
-semi_final_winners = simulate_matches(sf_cell_index, 2, sf_match_list, sch_res_ws)
-
-# Save the semi final results into a spread sheet.
-sch_res_wb.save("Wimbledon_Model_Results.xlsx")
-
-##########################################################
-####### Populate and process final match #################
-sch_res_ws[f'A{final_cell_index-1}'] = "Wimbledon Final"
-sch_res_ws[f'A{final_cell_index}'] = "Match"
-sch_res_ws[f'B{final_cell_index}'] = "Rank"
-sch_res_ws[f'C{final_cell_index}'] = "Player Name"
-
-# Schedule final matche
-final_match_list = []
-
-# Fetch player indices from the list of 32 players to simulate final match
-pl1_index = get_player_index(semi_final_winners[0])
-pl2_index = get_player_index(semi_final_winners[1])
-
-# Populate final schedule from semi final winners.
-sch_res_ws[f'A{final_cell_index+1}'] = 1
-sch_res_ws[f'B{final_cell_index+1}'] = pl1_index+1
-sch_res_ws[f'C{final_cell_index+1}'] = semi_final_winners[0]
-sch_res_ws[f'B{final_cell_index+2}'] = pl2_index+1
-sch_res_ws[f'C{final_cell_index+2}'] = semi_final_winners[1]
-# Generate a list of dictionaries for final matche
-final_match_list.append({'match_index':(1),'player1_index':(pl1_index),'player2_index':(pl2_index)})
-
-# Save the final schedule into a spread sheet.
-sch_res_wb.save("Wimbledon_Model_Results.xlsx")
-
-# Simulate matches for final
-final_winner = simulate_matches(final_cell_index, 1, final_match_list, sch_res_ws)
-
-# Record the simulate wimbledon champion
-# Fetch player indices from the list of 32 players to simulate final match
-Champ_pl_index = get_player_index(final_winner[0])
-sch_res_ws[f'A{champ_cell_index}'] = "Wimbledon Champion"
-sch_res_ws[f'B{champ_cell_index}'] = "Rank"
-sch_res_ws[f'C{champ_cell_index}'] = "Player Name"
-
-sch_res_ws[f'B{champ_cell_index+1}'] = Champ_pl_index+1
-sch_res_ws[f'C{champ_cell_index+1}'] = final_winner[0]
-
-print(f"The wimbledon Champion is {final_winner[0]}")
-# Save the final results into a spread sheet.
-sch_res_wb.save("Wimbledon_Model_Results.xlsx")
+print(tournament_winners_dict)
 
 # Close the workbook after writing simulated data
 sch_res_wb.close()
