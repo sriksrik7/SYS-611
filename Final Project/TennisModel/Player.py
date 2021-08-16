@@ -1,5 +1,7 @@
-import openpyxl
-# from pathlib import Path
+################################## Start of file ##################################
+# File Name: Player.py
+# Description: This is file contains all methods for class Tennis_Player
+###################################################################################
 
 class Tennis_Player:
 
@@ -35,6 +37,12 @@ class Tennis_Player:
   RET_POINTS_WON_WEIGHT = 7/100
   RET_GAMES_WON_WEIGHT  = 8/100
 
+  ################################ Start of function ##############################
+  # Function Name: __init__
+  # Description: This is a constructor for class Tennis_Player to initializes all
+  #              class variables
+  # Return: None
+  #################################################################################
   def __init__(self):
     self.player_name = "null"
     self.ace_percent = int(0)
@@ -52,16 +60,42 @@ class Tennis_Player:
     self.ret_points_won = int(0)
     self.ret_games_won = int(0)
 
+  ################################ End of function ################################
+
+  ################################ Start of function ##############################
+  # Function Name: get_name
+  # Description: This function returns a player's name for a given Tennis_Player
+  #              class object
+  # Return: None
+  #################################################################################
   def get_name(self):
     return(self.player_name)
+  ################################ End of function ################################
 
-  def set_name(self, val):
-    self.player_name = val
+  ################################ Start of function ##############################
+  # Function Name: set_name
+  # Description: This function sets a player's name for a given Tennis_Player
+  #              class object
+  # Return: None
+  #################################################################################
+  def set_name(self, name):
+    self.player_name = name
 
+  ################################ End of function ################################
+
+  ################################ Start of function ##############################
+  # Function Name: set_stat
+  # Description: This function updates the player's statistics information based on
+  #              the given statistics type and data
+  # Return: None
+  #################################################################################
   def set_stat(self, stat_type,val):
 
       if stat_type == "":
-          print(f"Invalid stat_type: {stat_type}")
+          raise ValueError(f"Invalid stat_type: {stat_type}")
+
+      if val == None:
+          raise ValueError(f"Invalid stat value: {val}")
 
       if stat_type == "ACE%":
           self.ace_percent = val
@@ -105,7 +139,14 @@ class Tennis_Player:
       if stat_type == "Return Games Won%":
           self.ret_games_won = val
 
+  ################################ End of function ################################
 
+  ################################ Start of function ##############################
+  # Function Name: weightage_calculation
+  # Description: This function calculates the win weigthage for a tennis player
+  #              based on the provided statistics information
+  # Return: win weigthage number
+  #################################################################################
   def weightage_calculation(self):
 
       ret_weightage = self.ace_percent * self.ACE_WEIGHT
@@ -124,4 +165,8 @@ class Tennis_Player:
       ret_weightage += self.ret_games_won * self.RET_GAMES_WON_WEIGHT
 
       return ret_weightage
+  ################################ End of function ################################
+
+################################## End of file ####################################
+
 

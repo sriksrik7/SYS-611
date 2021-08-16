@@ -1,3 +1,9 @@
+################################ Start of file ##################################
+# File Name: Game.py
+# Description: This is file contains all methods to simulate men singles wimbledon
+#              tennis tournament
+#################################################################################
+
 from openpyxl import Workbook, load_workbook
 import random
 from Player import Tennis_Player
@@ -16,13 +22,16 @@ def is_player1_win_coin_flip():
         return False
 ################################ End of function ################################
 
+
 ################################ Start of function ##############################
 # Function Name: simulate_set
 # Description: Function to simulate a set in Tennis
-# Return: returns a string contains the winner's rank/index followed by the
-#        set's result.
-#        Eg: Wining player rank/index, player 1 score , player 2 score
-#        Eg: 2,4,6
+# Return: returns a string contains the wining player's rank/index, player 1 score,
+#         player 2 score, is any player injured, injured player index.
+#         Eg: Wining player rank/index, player 1 score , player 2 score,
+#             is any player injured, injured player index.
+#         Eg: 2,4,6,False,None
+#         Eg: 2,3,4,True,23
 #################################################################################
 def simulate_set(player1_idx, player2_idx):
 
@@ -35,6 +44,13 @@ def simulate_set(player1_idx, player2_idx):
     player1_gamepoints = 0
     player2_gamepoints = 0
 
+    # holds player1 and player2's injury information
+    is_player1_injured = False
+    is_player2_injured = False
+    is_any_player_injured = False
+    player_injured_idx = None
+
+    # Loop through to simulate all 12 sets
     for game_index in range(12):
         rand_fp = random.uniform(0.0, 100.0)
         # Even serves are serviced by player 1
@@ -49,6 +65,31 @@ def simulate_set(player1_idx, player2_idx):
                 player2_gamepoints += 1
             else:
                 player1_gamepoints += 1
+
+        # Check if player 1 is injured during the sets
+        injury_rand_p1 = random.randint(0, 10000)
+        if injury_rand_p1 <= 17:
+            is_player1_injured = True
+        else:
+            # Check if player 2 is injured during the sets
+            injury_rand_p2 = random.randint(0, 10000)
+            if injury_rand_p2 <= 17:
+                is_player2_injured = True
+
+        # If player 1 is injured forfeit the match for player 1, and make player 2 as a winner
+        if is_player1_injured == True:
+            player_won_idx = player2_idx
+            player_injured_idx = player1_idx
+            is_any_player_injured = True
+            break
+
+        # If player 2 is injured forfeit the match for player 2, and make player 1 as a winner
+        if is_player2_injured == True:
+            player_won_idx = player1_idx
+            player_injured_idx = player2_idx
+            is_any_player_injured = True
+            break
+
         # If a player has scored 6 points and if he is 1 set ahead of the opponent,
         # then the set is complete. Hence break from the for loop to finalise the set.
         # Eg: 6-0,6-1,6-2,6-3 and 6-4
@@ -58,37 +99,110 @@ def simulate_set(player1_idx, player2_idx):
         elif player2_gamepoints == 6 and game_index >= 5 and game_index != 10:
             break
 
-    # Check if both players scored 6-6
-    # Based on higher weightage of a player, determine the tie breaker
-    if player1_gamepoints == player2_gamepoints:
-        if player1_weightage > player2_weightage:
+    # If none of the players are injured, process player win determination
+    if is_any_player_injured == False:
+        # Check if both players scored 6-6
+        # Based on higher weightage of a player, determine the tie breaker
+        if player1_gamepoints == player2_gamepoints:
+            if player1_weightage > player2_weightage:
+                player_won_idx = player1_idx
+                # Eg: 7-6
+                player1_gamepoints += 1
+            else:
+                player_won_idx = player2_idx
+                # Eg: 6-7
+                player2_gamepoints += 1
+        elif player1_gamepoints > player2_gamepoints:
             player_won_idx = player1_idx
-            # Eg: 7-6
-            player1_gamepoints += 1
         else:
+            # if player2_gamepoints > player1_gamepoints
             player_won_idx = player2_idx
-            # Eg: 6-7
-            player2_gamepoints += 1
-    elif player1_gamepoints > player2_gamepoints:
-        player_won_idx = player1_idx
-    else:
-        # if player2_gamepoints > player1_gamepoints
-        player_won_idx = player2_idx
 
     # String contains the winner rank/index followed by the set result
-    # Eg: Wining player rank/index, player 1 score , player 2 score
-    # Eg: 2,4,6
-    ret_string = f"{player_won_idx},{player1_gamepoints},{player2_gamepoints}"
+    # Eg: Wining player rank/index, player 1 score , player 2 score, is any player injured, injured player index.
+    # Eg: 2,4,6,False,None
+    # Eg: 2,3,4,True,23
+    ret_string = f"{player_won_idx},{player1_gamepoints},{player2_gamepoints},{is_any_player_injured},{player_injured_idx}"
     # print(ret_string)
     return ret_string
 ################################ End of function ################################
 
+
 ################################ Start of function ##############################
-# Function Name: simulate_games
-# Description: Function to simulate tennis games
+# Function Name: write_results_to_cell
+# Description: This function to writes a tennis set results and determines if a
+#              match is forfeited
+# Return: returns a string containing the match forfeit information along with
+#         wining player's index
+#################################################################################
+def write_results_to_cell( str_result, wr_cell_num, is_player_index_flipped, ply1_index, ply2_index, set_result_ws ):
+
+    is_match_forfeited =  False
+    player_won_index = None
+    # Split the string the read set details
+    # Eg: 2,4,6,False,None
+    # Eg: 2,3,4,True,23
+    part_str_set_result = str_result.split(',')
+
+    # Cell number to write results for player 2
+    next_cell = f"{wr_cell_num[0]}{int(wr_cell_num[1:])+1}"
+
+    # If player 1 has lost the toss, flip and write the results in assigned cell numbers
+    # of player 1 and player 2
+    if is_player_index_flipped == True:
+        # Write player2 result in current cell, since the player1 become player2 due to coin toss
+        set_result_ws[wr_cell_num] = int(part_str_set_result[2])
+        # Write player1 result in next cell, since the player2 become player1 due to coin toss
+        set_result_ws[next_cell] = int(part_str_set_result[1])
+        # If the match is forfeited, process the string to determine the winner and
+        # write the results in respective cell number
+        if part_str_set_result[3] == "True":
+            is_match_forfeited = True
+            # if player1 is injured, write x to next cell
+            if part_str_set_result[4] == ply1_index:
+                set_result_ws[next_cell] = "X"
+                # Set player2 has winner, since player 1 is injured
+                player_won_index = ply2_index
+            # if player2 is injured, write x to current cell
+            else:
+                set_result_ws[wr_cell_num] = "X"
+                # Set player1 has winner, since player 2 is injured
+                player_won_index = ply1_index
+    else:
+        # Don't flip write the results as it is designated cell numbers.
+        set_result_ws[wr_cell_num] = int(part_str_set_result[1])
+        set_result_ws[next_cell] = int(part_str_set_result[2])
+
+        # If the match is forfeited, process the string to determine the winner and
+        # write the results in respective cell number
+        if part_str_set_result[3] == "True":
+            is_match_forfeited = True
+            # if player1 is injured, write x to current cell
+            if part_str_set_result[4] == ply1_index:
+                set_result_ws[wr_cell_num] = "X"
+                # Set player2 has winner, since player 1 is injured
+                player_won_index = ply2_index
+            # if player2 is injured, write x to next cell
+            else:
+                set_result_ws[next_cell] = "X"
+                # Set player1 has winner, since player 2 is injured
+                player_won_index = ply1_index
+
+    # Format the return string to include both match forfeit and winning player's
+    # index inforamtion
+    return_result_str = f"{is_match_forfeited},{player_won_index}"
+    return return_result_str
+################################ End of function ################################
+
+
+################################ Start of function ##############################
+# Function Name: simulate_matches
+# Description: Function to simulate tennis matches
 # Return: returns a list of winners
 #################################################################################
-def simulate_games(cell_num, num_matches, match_detail_list, mtc_result_ws):
+def simulate_matches(cell_num, num_matches, match_detail_list, mtc_result_ws):
+
+    # List to hold the winners for given stage of simulated matches
     list_of_winners = []
     cell_aphabet = ["D", "E", "F", "G", "H"]
 
@@ -105,15 +219,18 @@ def simulate_games(cell_num, num_matches, match_detail_list, mtc_result_ws):
 
         #Is player1 and player2 flipped at coin toss
         #if flipped player 2 is servicing first else player 1 is servicing first
-        is_player_index_flipped = False
+        is_player_idx_flipped = False
 
-        # Fetch player 1 and player 2's indices/ranks from the match schedule
+        # Default the flag "is_match_abandoned" to False
+        is_match_abandoned = False
+
+        # Fetch player 1 and player 2's indices/ranks from the match schedule list
         if is_player1_win_coin_flip():
-            is_player_index_flipped = False
+            is_player_idx_flipped = False
             p1_index = match_detail_list[match_list_idx]['player1_index']
             p2_index = match_detail_list[match_list_idx]['player2_index']
         else:
-            is_player_index_flipped = True
+            is_player_idx_flipped = True
             p2_index = match_detail_list[match_list_idx]['player1_index']
             p1_index = match_detail_list[match_list_idx]['player2_index']
 
@@ -130,90 +247,126 @@ def simulate_games(cell_num, num_matches, match_detail_list, mtc_result_ws):
             else:
                 p2_win_count += 1
 
-            # If the player 1 has lost the toss, flip and write the results in assigned cell numbers
-            if is_player_index_flipped == True:
-                mtc_result_ws[f'{cell_aphabet[match_played]}{cell_num}'] = int(part_set_result[2])
-                mtc_result_ws[f'{cell_aphabet[match_played]}{cell_num + 1}'] = int(part_set_result[1])
-            else:
-                mtc_result_ws[f'{cell_aphabet[match_played]}{cell_num}'] = int(part_set_result[1])
-                mtc_result_ws[f'{cell_aphabet[match_played]}{cell_num + 1}'] = int(part_set_result[2])
+            # Write the set results to the cells
+            is_match_abnd_details = write_results_to_cell(set_result, f'{cell_aphabet[match_played]}{cell_num}', is_player_idx_flipped, p1_index, p2_index, mtc_result_ws)
+            is_match_abnd_info = is_match_abnd_details.split(',')
 
-        # print(f"p1_win_count= {p1_win_count}; p2_win_count= {p2_win_count}")
-        # check the any player has won the 3 sets already after 3 sets. If so match is finished
-        if p1_win_count == 3:
-            mtc_result_ws[f'I{cell_num}'] = f"{players[p1_index].get_name()}"
-            list_of_winners.append(players[p1_index].get_name())
+            # If match is abandoned, break the simulation for rest of the match
+            if is_match_abnd_info[0] == "True":
+                is_match_abandoned = True
+                break
+
+        # If match is not abandoned, check if any player has already won 3 sets.
+        if is_match_abandoned == False:
+            # Check if player 1 has already won 3 sets.
+            if p1_win_count == 3:
+                mtc_result_ws[f'I{cell_num}'] = f"{players[p1_index].get_name()}"
+                list_of_winners.append(players[p1_index].get_name())
+                # Increment the cell number for next match
+                cell_num += 1
+                continue
+            # Check if player 2 has already won 3 sets.
+            elif p2_win_count == 3:
+                mtc_result_ws[f'I{cell_num}'] = f"{players[p2_index].get_name()}"
+                list_of_winners.append(players[p2_index].get_name())
+                # Increment the cell number for next match
+                cell_num += 1
+                continue
+        # If match is abandoned, write the player win inforamtion in designated cell
+        # and add the player name to list winners for this stage of matches
+        else:
+            mtc_result_ws[f'I{cell_num}'] = f"{players[int(is_match_abnd_info[1])].get_name()}"
+            list_of_winners.append(players[int(is_match_abnd_info[1])].get_name())
             # Increment the cell number for next match
             cell_num += 1
             continue
-        elif p2_win_count == 3:
-            mtc_result_ws[f'I{cell_num}'] = f"{players[p2_index].get_name()}"
-            list_of_winners.append(players[p2_index].get_name())
-            # Increment the cell number for next match
-            cell_num += 1
-            continue
+
 
         # If none of the player has won 3 sets continue to simulate 4th set
         set4_result = simulate_set(p1_index,p2_index)
         part_set4_result = set4_result.split(',')
-
-        # If the player 1 has lost the toss, flip and write the results in assigned cell numbers
-        if is_player_index_flipped == True:
-            mtc_result_ws[f'G{cell_num}'] = int(part_set4_result[2])
-            mtc_result_ws[f'G{cell_num + 1}'] = int(part_set4_result[1])
-        else:
-            mtc_result_ws[f'G{cell_num}'] = int(part_set4_result[1])
-            mtc_result_ws[f'G{cell_num + 1}'] = int(part_set4_result[2])
 
         if p1_index == int(part_set4_result[0]):
             p1_win_count += 1
         else:
             p2_win_count += 1
 
-        # print(f"p1_win_count= {p1_win_count}; p2_win_count= {p2_win_count}")
-        # check the any player has won the 3 sets already. If so match is finished
-        if p1_win_count == 3:
-            mtc_result_ws[f'I{cell_num}'] = f"{players[p1_index].get_name()}"
-            list_of_winners.append(players[p1_index].get_name())
-            # Increment the cell number for next match
-            cell_num += 1
-            continue
-        elif p2_win_count == 3:
-            mtc_result_ws[f'I{cell_num }'] = f"{players[p2_index].get_name()}"
-            list_of_winners.append(players[p2_index].get_name())
-            # Increment the cell number for next match
+        # Write the set results to the cells
+        is_match_abnd_details = write_results_to_cell(set4_result, f'G{cell_num}', is_player_idx_flipped, p1_index, p2_index, mtc_result_ws)
+        is_match_abnd_info = is_match_abnd_details.split(',')
+        # print(is_match_abnd_info)
+
+        # If match is abandoned, set is_match_abandoned flag to True
+        if is_match_abnd_info[0] == "True":
+            is_match_abandoned = True
+
+        # If match is not abandoned, check if any player has already won 3 sets out of 4 sets
+        if is_match_abandoned == False:
+            # Check if player 1 has already won 3 sets.
+            if p1_win_count == 3:
+                mtc_result_ws[f'I{cell_num}'] = f"{players[p1_index].get_name()}"
+                list_of_winners.append(players[p1_index].get_name())
+                # Increment the cell number for next match
+                cell_num += 1
+                continue
+            # Check if player 2 has already won 3 sets.
+            elif p2_win_count == 3:
+                mtc_result_ws[f'I{cell_num }'] = f"{players[p2_index].get_name()}"
+                list_of_winners.append(players[p2_index].get_name())
+                # Increment the cell number for next match
+                cell_num += 1
+                continue
+        # If match is abandoned, write the player win inforamtion in designated cell
+        # and add the player name to list winners for this stage of matches
+        else:
+            mtc_result_ws[f'I{cell_num}'] = f"{players[int(is_match_abnd_info[1])].get_name()}"
+            list_of_winners.append(players[int(is_match_abnd_info[1])].get_name())
+            # Increment the cell number for next match and continue to simulate next match
             cell_num += 1
             continue
 
         # If none of the player has won 3 sets continue to simulate final set
         set5_result = simulate_set(p1_index,p2_index)
         part_set5_result = set5_result.split(',')
-
-        # If the player 1 has lost the toss, flip and write the results in assigned cell numbers
-        if is_player_index_flipped == True:
-            mtc_result_ws[f'H{cell_num}'] = int(part_set5_result[2])
-            mtc_result_ws[f'H{cell_num + 1}'] = int(part_set5_result[1])
-        else:
-            mtc_result_ws[f'H{cell_num}'] = int(part_set5_result[1])
-            mtc_result_ws[f'H{cell_num + 1}'] = int(part_set5_result[2])
+        # print(is_match_abnd_info)
 
         if p1_index == int(part_set5_result[0]):
             p1_win_count += 1
         else:
             p2_win_count += 1
 
-        if p1_win_count == 3:
-            mtc_result_ws[f'I{cell_num}'] = f"{players[p1_index].get_name()}"
-            list_of_winners.append(players[p1_index].get_name())
-        elif p2_win_count == 3:
-            mtc_result_ws[f'I{cell_num}'] = f"{players[p2_index].get_name()}"
-            list_of_winners.append(players[p2_index].get_name())
+        # Write the set results to the cells
+        is_match_abnd_details = write_results_to_cell(set5_result, f'H{cell_num}', is_player_idx_flipped, p1_index, p2_index, mtc_result_ws)
+        is_match_abnd_info = is_match_abnd_details.split(',')
+
+        # If match is abandoned, set is_match_abandoned flag to True
+        if is_match_abnd_info[0] == "True":
+            is_match_abandoned = True
+
+        # If match is not abandoned, determine who won the match and write the winning
+        # player's name in the designated cell, also add the player's name to list winners
+        # for this stage of matches
+        if is_match_abandoned == False:
+            # Check if player 1 has already won 3 sets.
+            if p1_win_count == 3:
+                mtc_result_ws[f'I{cell_num}'] = f"{players[p1_index].get_name()}"
+                list_of_winners.append(players[p1_index].get_name())
+            # Check if player 2 has already won 3 sets.
+            elif p2_win_count == 3:
+                mtc_result_ws[f'I{cell_num}'] = f"{players[p2_index].get_name()}"
+                list_of_winners.append(players[p2_index].get_name())
+        # If match is abandoned, write the player win information in designated cell
+        # and add the player name to list winners for this stage of matches
+        else:
+            mtc_result_ws[f'I{cell_num}'] = f"{players[int(is_match_abnd_info[1])].get_name()}"
+            list_of_winners.append(players[int(is_match_abnd_info[1])].get_name())
 
         # Increment the cell number for next match
         cell_num += 1
 
     return list_of_winners
 ################################ End of function ################################
+
 
 ################################ Start of function ##############################
 # Function Name: get_player_index
@@ -222,6 +375,7 @@ def simulate_games(cell_num, num_matches, match_detail_list, mtc_result_ws):
 #################################################################################
 def get_player_index(p_name):
     ret_player_index = int()
+    # Loop through all 32 players to get the index for a given player name
     for p_idx in range(32):
         # print(f"p_idx->{p_idx}: players->{players[p_idx].get_name()}: p_name->{p_name}")
         if (players[p_idx].get_name() == p_name):
@@ -229,7 +383,6 @@ def get_player_index(p_name):
             break
     return ret_player_index
 ################################ End of function ################################
-
 
 
 #################################################################################
@@ -343,7 +496,7 @@ for sch_index in range(16):
 sch_res_wb.save("Wimbledon_Model_Results.xlsx")
 
 # Simulate matches for first round
-first_round_winners = simulate_games(rd1_cell_index, 16, first_rd_match_list, sch_res_ws)
+first_round_winners = simulate_matches(rd1_cell_index, 16, first_rd_match_list, sch_res_ws)
 
 # Save the results of first round matches
 sch_res_wb.save("Wimbledon_Model_Results.xlsx")
@@ -386,7 +539,7 @@ for win_rd1_low_index in reversed(range(8)):
 sch_res_wb.save("Wimbledon_Model_Results.xlsx")
 
 # Simulate matches for second round
-scnd_round_winners = simulate_games(rd2_cell_index, 8, scnd_rd_match_list, sch_res_ws)
+scnd_round_winners = simulate_matches(rd2_cell_index, 8, scnd_rd_match_list, sch_res_ws)
 
 # Save the second round results into a spread sheet.
 sch_res_wb.save("Wimbledon_Model_Results.xlsx")
@@ -423,7 +576,7 @@ for index in range(4):
 sch_res_wb.save("Wimbledon_Model_Results.xlsx")
 
 # Simulate matches for quarter final
-quarter_final_winners = simulate_games(qf_cell_index, 4, qf_match_list, sch_res_ws)
+quarter_final_winners = simulate_matches(qf_cell_index, 4, qf_match_list, sch_res_ws)
 
 # Save the quarter final results into a spread sheet.
 sch_res_wb.save("Wimbledon_Model_Results.xlsx")
@@ -460,7 +613,7 @@ for index in range(2):
 sch_res_wb.save("Wimbledon_Model_Results.xlsx")
 
 # Simulate matches for semi final
-semi_final_winners = simulate_games(sf_cell_index, 2, sf_match_list, sch_res_ws)
+semi_final_winners = simulate_matches(sf_cell_index, 2, sf_match_list, sch_res_ws)
 
 # Save the semi final results into a spread sheet.
 sch_res_wb.save("Wimbledon_Model_Results.xlsx")
@@ -492,7 +645,7 @@ final_match_list.append({'match_index':(1),'player1_index':(pl1_index),'player2_
 sch_res_wb.save("Wimbledon_Model_Results.xlsx")
 
 # Simulate matches for final
-final_winner = simulate_games(final_cell_index, 1, final_match_list, sch_res_ws)
+final_winner = simulate_matches(final_cell_index, 1, final_match_list, sch_res_ws)
 
 # Record the simulate wimbledon champion
 # Fetch player indices from the list of 32 players to simulate final match
@@ -513,3 +666,5 @@ sch_res_wb.close()
 #################################################################################
 ########################         End of Main         ############################
 #################################################################################
+
+################################## End of file ##################################
