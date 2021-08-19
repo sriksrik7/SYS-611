@@ -711,16 +711,20 @@ tournament_winners_ws.title = "WinnersSimInfo"
 tournament_winners_ws[f'A1'] = "Tournament Winner Name"
 tournament_winners_ws[f'B1'] = "Number of times won"
 
+# Sort the tournament winners dictionary based on decreasing order of dictionary values
+trnmt_winners_sorted_dict = sorted(tournament_winners_dict.items(), key=lambda x: x[1], reverse=True)
+
 winner_idx = 1
-for winner in tournament_winners_dict:
+for winner in trnmt_winners_sorted_dict:
     winner_idx +=1
-    tournament_winners_ws[f'A{winner_idx}'] = winner
-    tournament_winners_ws[f'B{winner_idx}'] = tournament_winners_dict[winner]
+    tournament_winners_ws[f'A{winner_idx}'] = winner[0]
+    tournament_winners_ws[f'B{winner_idx}'] = winner[1]
+    tournament_winners_ws[f'C{winner_idx}'] = '{:.2%}'.format(winner[1]/total_simulations)
 
 # Save the spread sheet after updating the WinnersInfo.
 sch_res_wb.save(f"Wimbledon_Model_Results_{sheet_title}.xlsx")
 
-print(tournament_winners_dict)
+print(trnmt_winners_sorted_dict)
 
 # Close the workbook after writing simulated data
 sch_res_wb.close()
