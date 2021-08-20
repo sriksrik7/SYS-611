@@ -681,53 +681,60 @@ elif sheet_input == "2017":
 else:
     raise ValueError(f"Invalid input {sheet_input}, Please try again...")
 
+# Prompt user to close the output excel file
+print("********** Note: **************")
+print("If opened,\nPlease make sure to close the excel result file before executing the model.")
+print("*******************************\n")
 # Take input from the user to perform number of simulations
-total_simulations = int(input("Enter the number of simulations to be performed:\nNote: Simulations are limited to 30\n -->"))
+try:
+    total_simulations = int(input("Enter the number of simulations to be performed:\nNote: Simulations are limited to 30\n -->"))
 
-if total_simulations > 30:
-    raise ValueError(f"The provided number of simualtions is greater than 30, Please try again...")
+    if total_simulations > 30:
+        raise ValueError(f"The provided number of simualtions is greater than 30, Please try again...")
 
-print("Please be patient it takes about 3 minutes to simulate")
+    print("Please be patient it takes about 3 minutes to simulate")
 
-# Process input statistics data for a given sheet name from file Statistics_Data.xlsx
-process_input_statistics_data(sheet_title)
+    # Process input statistics data for a given sheet name from file Statistics_Data.xlsx
+    process_input_statistics_data(sheet_title)
 
-# Create a new work book to record all results of each simulated tournament
-sch_res_wb = Workbook()
+    # Create a new work book to record all results of each simulated tournament
+    sch_res_wb = Workbook()
 
-tournament_winners_dict = {}
-# simulate multiple number of tournaments for user provided input simulations
-for sim_idx in range(total_simulations):
-    tournament_winner = simulate_tournament(sim_idx, sch_res_wb, sheet_title)
+    tournament_winners_dict = {}
+    # simulate multiple number of tournaments for user provided input simulations
+    for sim_idx in range(total_simulations):
+        tournament_winner = simulate_tournament(sim_idx, sch_res_wb, sheet_title)
 
-    if tournament_winner in tournament_winners_dict:
-        tournament_winners_dict[tournament_winner] += 1
-    else:
-        tournament_winners_dict.update({tournament_winner: 1})
+        if tournament_winner in tournament_winners_dict:
+            tournament_winners_dict[tournament_winner] += 1
+        else:
+            tournament_winners_dict.update({tournament_winner: 1})
 
-# Re-use the work "Sheet" for winnerSimInfo
-tournament_winners_ws = sch_res_wb["Sheet"]
-tournament_winners_ws.title = "WinnersSimInfo"
-tournament_winners_ws[f'A1'] = "Tournament Winner Name"
-tournament_winners_ws[f'B1'] = "Number of times won"
+    # Re-use the work "Sheet" for winnerSimInfo
+    tournament_winners_ws = sch_res_wb["Sheet"]
+    tournament_winners_ws.title = "WinnersSimInfo"
+    tournament_winners_ws[f'A1'] = "Tournament Winner Name"
+    tournament_winners_ws[f'B1'] = "Number of times won"
 
-# Sort the tournament winners dictionary based on decreasing order of dictionary values
-trnmt_winners_sorted_dict = sorted(tournament_winners_dict.items(), key=lambda x: x[1], reverse=True)
+    # Sort the tournament winners dictionary based on decreasing order of dictionary values
+    trnmt_winners_sorted_dict = sorted(tournament_winners_dict.items(), key=lambda x: x[1], reverse=True)
 
-winner_idx = 1
-for winner in trnmt_winners_sorted_dict:
-    winner_idx +=1
-    tournament_winners_ws[f'A{winner_idx}'] = winner[0]
-    tournament_winners_ws[f'B{winner_idx}'] = winner[1]
-    tournament_winners_ws[f'C{winner_idx}'] = '{:.2%}'.format(winner[1]/total_simulations)
+    winner_idx = 1
+    for winner in trnmt_winners_sorted_dict:
+        winner_idx +=1
+        tournament_winners_ws[f'A{winner_idx}'] = winner[0]
+        tournament_winners_ws[f'B{winner_idx}'] = winner[1]
+        tournament_winners_ws[f'C{winner_idx}'] = '{:.2%}'.format(winner[1]/total_simulations)
 
-# Save the spread sheet after updating the WinnersInfo.
-sch_res_wb.save(f"Wimbledon_Model_Results_{sheet_title}.xlsx")
+    # Save the spread sheet after updating the WinnersInfo.
+    sch_res_wb.save(f"Wimbledon_Model_Results_{sheet_title}.xlsx")
 
-print(trnmt_winners_sorted_dict)
+    print(trnmt_winners_sorted_dict)
 
-# Close the workbook after writing simulated data
-sch_res_wb.close()
+    # Close the workbook after writing simulated data
+    sch_res_wb.close()
+except ValueError:
+    print("The input was not a valid integer")
 #################################################################################
 ########################         End of Main         ############################
 #################################################################################
